@@ -36,11 +36,11 @@ const TeamSection = () => {
       designation: "Secretary",
       image: sanjana,
     },
-    {
-      name: "Yashas Navale",
-      designation: "Treasurer",
-      image: yashas,
-    },
+    // {
+    //   name: "Yashas Navale",
+    //   designation: "Treasurer",
+    //   image: yashas,
+    // },
     {
       name: "Samuel Lazar",
       designation: "Webmaster",
@@ -53,7 +53,7 @@ const TeamSection = () => {
     },
     {
       name: "Shreya S Tavarkhed",
-      designation: "Joint Secretary",
+      designation: "Treasurer",
       image: shreya,
     },
     {
@@ -73,7 +73,7 @@ const TeamSection = () => {
     },
     {
       name: "Srushti T",
-      designation: "Membership Dev Chair",
+      designation: "Membership Development Chair",
       image: srushti,
     },
     {
@@ -101,13 +101,13 @@ const TeamSection = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12 justify-items-center">
           {teamMembers.map((member, index) => (
             <TeamCard
               key={index}
               name={member.name}
               designation={member.designation}
-              image={member.image || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400"}
+              image={member.image}
               delay={index * 0.1}
             />
           ))}

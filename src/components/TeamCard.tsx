@@ -14,16 +14,16 @@ const TeamCard = ({ name, designation, image, delay = 0 }: TeamCardProps) => {
     <Dialog>
       <DialogTrigger asChild>
         <div 
-          className="group relative animate-fade-in-up transition-all duration-500 cursor-pointer"
+          className="group relative animate-fade-in-up transition-all duration-500 cursor-pointer flex flex-col items-center"
           style={{ animationDelay: `${delay}s` }}
         >
-          <div className="relative overflow-hidden rounded-full bg-gradient-to-br from-card to-primary/5 p-1 border-2 border-primary/20 hover:border-primary/60 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20">
+          <div className="relative w-48 h-48 rounded-full overflow-hidden bg-gradient-to-br from-card to-primary/5 p-1 border-2 border-primary/20 hover:border-primary/60 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 mx-auto">
             {/* Animated gradient border effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary-glow to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-primary-glow to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
             
-            <div className="relative bg-card rounded-full overflow-hidden">
+            <div className="relative w-full h-full bg-card rounded-full overflow-hidden">
               {/* Circular Image container */}
-              <div className="relative w-48 h-48 rounded-full overflow-hidden">
+              <div className="relative w-full h-full rounded-full overflow-hidden">
                 <img
                   src={image}
                   alt={name}
@@ -37,18 +37,18 @@ const TeamCard = ({ name, designation, image, delay = 0 }: TeamCardProps) => {
           </div>
           
           {/* Name below image */}
-          <div className="text-center mt-4">
+          <div className="text-center mt-4 w-full">
             <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-300">
               {name}
             </h3>
-            <p className="text-sm text-muted-foreground font-medium">
+            <p className="text-sm text-muted-foreground font-medium mt-1">
               {designation}
             </p>
           </div>
         </div>
       </DialogTrigger>
       
-      <DialogContent className="sm:max-w-md bottom-0 top-auto translate-y-0 data-[state=open]:slide-in-from-bottom-full data-[state=closed]:slide-out-to-bottom-full">
+      <DialogContent className="sm:max-w-md">
         <div className="flex flex-col items-center space-y-4 p-4">
           <div className="w-32 h-32 rounded-full overflow-hidden ring-4 ring-primary/20">
             <img
