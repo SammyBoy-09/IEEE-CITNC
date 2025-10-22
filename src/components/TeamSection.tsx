@@ -93,11 +93,11 @@ const TeamSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Meet Our Core Team
+            Meet The Core Team
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-primary-glow mx-auto mb-6" />
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Dedicated leaders driving innovation and excellence in our IEEE student community
+            Dedicated leaders driving innovation and excellence in our IEEE student branch
           </p>
         </div>
         
