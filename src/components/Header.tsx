@@ -1,17 +1,44 @@
 import { Menu } from "lucide-react";
 import { Button } from "./ui/button";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import ieeeLogo from "@/assets/ieee-logo.png";
 import citncLogo from "@/assets/citnc-logo.png";
 
 const Header = () => {
+  const [activeSection, setActiveSection] = useState("#home");
+
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
+    setActiveSection(targetId);
     const element = document.querySelector(targetId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["#home", "#about", "#events", "#team", "#benefits"];
+      
+      for (const section of sections) {
+        const element = document.querySelector(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          // Check if section is in viewport (accounting for header height)
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initial check
+    
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     { href: "#home", label: "Home" },
@@ -44,8 +71,8 @@ const Header = () => {
               transition={{ duration: 0.3 }}
             />
             <div className="hidden md:block">
-              <h1 className="text-lg font-bold text-foreground">IEEE Student Branch</h1>
-              <p className="text-xs text-muted-foreground">Cambridge Institute of Technology North Campus</p>
+              <h1 className="text-lg font-bold text-foreground">Student Branch</h1>
+              <p className="text-sm text-muted-foreground" style={{ marginTop: -3 }}>Cambridge Institute of Technology North Campus</p>
             </div>
           </motion.div>
           
@@ -55,15 +82,18 @@ const Header = () => {
                 key={item.href}
                 href={item.href}
                 onClick={(e) => scrollToSection(e, item.href)}
-                className="text-sm font-medium text-foreground hover:text-primary transition-colors cursor-pointer relative group"
+                className={`text-sm font-medium transition-colors cursor-pointer relative group ${
+                  activeSection === item.href ? "text-primary" : "text-foreground hover:text-primary"
+                }`}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.1 * index }}
               >
                 {item.label}
                 <motion.span
-                  className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"
-                  whileHover={{ width: "100%" }}
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
+                    activeSection === item.href ? "w-full" : "w-0 group-hover:w-full"
+                  }`}
                 />
               </motion.a>
             ))}
