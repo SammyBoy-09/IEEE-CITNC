@@ -195,6 +195,28 @@ All colors MUST be HSL.
   }
 }
 
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes textGlow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(0, 112, 243, 0.3),
+                 0 0 20px rgba(0, 112, 243, 0.2),
+                 0 0 30px rgba(0, 112, 243, 0.1);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(0, 112, 243, 0.5),
+                 0 0 30px rgba(0, 112, 243, 0.3),
+                 0 0 40px rgba(0, 112, 243, 0.2);
+  }
+}
+
 .animate-fade-in-up {
   animation: fadeInUp 0.8s ease-out forwards;
 }
@@ -213,4 +235,306 @@ All colors MUST be HSL.
 
 .animate-scale-in {
   animation: scaleIn 0.8s ease-out forwards;
+}
+
+/* Team Carousel Styles for Mobile */
+.team-carousel-wrapper {
+  position: relative;
+  padding: 2rem 0;
+  overflow: hidden;
+}
+
+.carousel-title {
+  font-size: 3rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-family: "Arial Black", "Arial Bold", Arial, sans-serif;
+  background: linear-gradient(
+    to bottom,
+    hsl(200 100% 35% / 35%) 30%,
+    rgb(255 255 255 / 0%) 76%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.carousel-container-mobile {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  perspective: 1000px;
+  margin: 2rem 0;
+}
+
+.carousel-track-mobile {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carousel-card-mobile {
+  position: absolute;
+  width: 220px;
+  height: 300px;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+}
+
+.carousel-card-mobile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carousel-card-mobile.center {
+  z-index: 10;
+  transform: scale(1.1) translateZ(0);
+}
+
+.carousel-card-mobile.center img {
+  filter: none;
+}
+
+.carousel-card-mobile.left-2 {
+  z-index: 1;
+  transform: translateX(-280px) scale(0.75) translateZ(-300px);
+  opacity: 0.5;
+}
+
+.carousel-card-mobile.left-2 img {
+  filter: grayscale(100%);
+}
+
+.carousel-card-mobile.left-1 {
+  z-index: 5;
+  transform: translateX(-140px) scale(0.85) translateZ(-100px);
+  opacity: 0.8;
+}
+
+.carousel-card-mobile.left-1 img {
+  filter: grayscale(80%);
+}
+
+.carousel-card-mobile.right-1 {
+  z-index: 5;
+  transform: translateX(140px) scale(0.85) translateZ(-100px);
+  opacity: 0.8;
+}
+
+.carousel-card-mobile.right-1 img {
+  filter: grayscale(80%);
+}
+
+.carousel-card-mobile.right-2 {
+  z-index: 1;
+  transform: translateX(280px) scale(0.75) translateZ(-300px);
+  opacity: 0.5;
+}
+
+.carousel-card-mobile.right-2 img {
+  filter: grayscale(100%);
+}
+
+.carousel-card-mobile.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.5);
+}
+
+.member-info-mobile {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 0 1rem;
+}
+
+.member-name-mobile {
+  color: hsl(200 100% 35%);
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.member-name-mobile::before,
+.member-name-mobile::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  width: 60px;
+  height: 2px;
+  background: hsl(200 100% 35%);
+  margin-top: 8px;
+}
+
+.member-name-mobile::before {
+  left: -70px;
+}
+
+.member-name-mobile::after {
+  right: -70px;
+}
+
+.member-role-mobile {
+  color: #848696;
+  font-size: 1.1rem;
+  font-weight: 500;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 0.5rem;
+}
+
+.dots-mobile {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+.dot-mobile {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: hsla(200, 100%, 35%, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot-mobile.active {
+  background: hsl(200 100% 35%);
+  transform: scale(1.3);
+}
+
+.nav-arrow-mobile {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: hsla(200, 100%, 35%, 0.7);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.3s ease;
+  border: none;
+  outline: none;
+}
+
+.nav-arrow-mobile:hover,
+.nav-arrow-mobile:active {
+  background: hsl(200 100% 35%);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.nav-arrow-mobile.left {
+  left: 10px;
+}
+
+.nav-arrow-mobile.right {
+  right: 10px;
+}
+
+@media (max-width: 380px) {
+  .carousel-title {
+    font-size: 2.5rem;
+  }
+
+  .carousel-card-mobile {
+    width: 180px;
+    height: 260px;
+  }
+
+  .carousel-card-mobile.left-2 {
+    transform: translateX(-230px) scale(0.7) translateZ(-300px);
+  }
+
+  .carousel-card-mobile.left-1 {
+    transform: translateX(-110px) scale(0.8) translateZ(-100px);
+  }
+
+  .carousel-card-mobile.right-1 {
+    transform: translateX(110px) scale(0.8) translateZ(-100px);
+  }
+
+  .carousel-card-mobile.right-2 {
+    transform: translateX(230px) scale(0.7) translateZ(-300px);
+  }
+
+  .member-name-mobile {
+    font-size: 1.5rem;
+  }
+
+  .member-name-mobile::before,
+  .member-name-mobile::after {
+    width: 40px;
+  }
+
+  .member-name-mobile::before {
+    left: -50px;
+  }
+
+  .member-name-mobile::after {
+    right: -50px;
+  }
+
+  .member-role-mobile {
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  /* Prevent body scroll when mobile menu is open */
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  /* Touch-friendly tap targets */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Reduce animations on mobile for performance */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Better text readability on mobile */
+  body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  /* Optimize blur effects on mobile */
+  .blur-3xl {
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+  }
 }

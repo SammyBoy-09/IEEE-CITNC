@@ -1,4 +1,5 @@
 import TeamCard from "./TeamCard";
+import TeamCarousel from "./TeamCarousel";
 import rajaRam from "@/assets/team/raja-ram.jpeg";
 import gowrish from "@/assets/team/gowrish.jpg";
 import ullas from "@/assets/team/ullas.jpg";
@@ -91,26 +92,32 @@ const TeamSection = () => {
   return (
     <section id="team" className="py-24 bg-muted/30">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Meet The Core Team
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-primary-glow mx-auto mb-6" />
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Dedicated leaders driving innovation and excellence in our IEEE student branch
-          </p>
-        </div>
+        {/* Mobile Carousel */}
+        <TeamCarousel members={teamMembers} />
+
+        {/* Desktop Grid */}
+        <div className="hidden md:block">
+          <div className="text-center mb-16 animate-fade-in-up">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+              Meet The Core Team
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-primary to-primary-glow mx-auto mb-6" />
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Dedicated leaders driving innovation and excellence in our IEEE student branch
+            </p>
+          </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12 justify-items-center">
-          {teamMembers.map((member, index) => (
-            <TeamCard
-              key={index}
-              name={member.name}
-              designation={member.designation}
-              image={member.image}
-              delay={index * 0.1}
-            />
-          ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12 justify-items-center">
+            {teamMembers.map((member, index) => (
+              <TeamCard
+                key={index}
+                name={member.name}
+                designation={member.designation}
+                image={member.image}
+                delay={index * 0.1}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

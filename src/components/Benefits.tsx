@@ -1,5 +1,6 @@
-import { BookOpen, Users, GraduationCap, Calendar, ShoppingBag, Heart, Award, Gift, Sparkles } from "lucide-react";
+import { BookOpen, Users, GraduationCap, Calendar, ShoppingBag, Heart, Award, Gift, Sparkles, ExternalLink } from "lucide-react";
 import { Card } from "./ui/card";
+import { Button } from "./ui/button";
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
@@ -193,6 +194,35 @@ const Benefits = () => {
             );
           })}
         </div>
+
+        {/* CTA Button */}
+        <motion.div 
+          className="flex justify-center mt-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={benefitsVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+        >
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-primary to-primary-glow hover:from-primary-glow hover:to-primary text-white shadow-lg hover:shadow-2xl transition-all duration-300 group"
+              asChild
+            >
+              <a 
+                href="https://www.ieee.org/membership/membership-benefits" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2"
+              >
+                Know More
+                <ExternalLink className="h-5 w-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+              </a>
+            </Button>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

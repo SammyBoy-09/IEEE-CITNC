@@ -4,9 +4,11 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import ieeeLogo from "@/assets/ieee-logo.png";
 import citncLogo from "@/assets/citnc-logo.png";
+import MobileMenu from "./MobileMenu";
 
 const Header = () => {
   const [activeSection, setActiveSection] = useState("#home");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
@@ -66,13 +68,13 @@ const Header = () => {
             <motion.img 
               src={ieeeLogo} 
               alt="IEEE Logo" 
-              className="h-12 w-auto"
+              className="h-10 md:h-12 w-auto"
               whileHover={{ scale: 1.03, }}
               transition={{ duration: 0.3 }}
             />
-            <div className="hidden md:block">
-              <h1 className="text-lg font-bold text-foreground">Student Branch</h1>
-              <p className="text-sm text-muted-foreground" style={{ marginTop: -3 }}>Cambridge Institute of Technology North Campus</p>
+            <div className="hidden sm:block">
+              <h1 className="text-base md:text-lg font-bold text-foreground">Student Branch</h1>
+              <p className="text-xs md:text-sm text-muted-foreground" style={{ marginTop: -3 }}>Cambridge Institute of Technology North Campus</p>
             </div>
           </motion.div>
           
@@ -116,12 +118,25 @@ const Header = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <Button variant="ghost" size="icon" className="md:hidden">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="md:hidden"
+              onClick={() => setIsMobileMenuOpen(true)}
+              aria-label="Open menu"
+            >
               <Menu className="h-6 w-6" />
             </Button>
           </motion.div>
         </div>
       </div>
+
+      <MobileMenu
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+        activeSection={activeSection}
+        onNavigate={scrollToSection}
+      />
     </motion.header>
   );
 };

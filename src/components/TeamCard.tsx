@@ -1,6 +1,7 @@
 import { Mail, Linkedin } from "lucide-react";
 import { Card } from "./ui/card";
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
+import { motion } from "framer-motion";
 
 interface TeamCardProps {
   name: string;
@@ -38,33 +39,106 @@ const TeamCard = ({ name, designation, image, delay = 0 }: TeamCardProps) => {
           
           {/* Name below image */}
           <div className="text-center mt-4 w-full">
-            <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-300">
-              {name}
-            </h3>
-            <p className="text-sm text-muted-foreground font-medium mt-1">
+            <motion.h3 
+              className="text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-300 relative overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ 
+                duration: 0.5, 
+                delay: delay + 0.2,
+                ease: "easeOut"
+              }}
+            >
+              <motion.span
+                className="inline-block"
+                initial={{ backgroundPosition: "200% center" }}
+                whileInView={{ backgroundPosition: "-200% center" }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 2,
+                  delay: delay + 0.4,
+                  ease: "linear"
+                }}
+                style={{
+                  backgroundImage: "linear-gradient(90deg, transparent 0%, rgba(var(--primary-rgb, 0, 112, 243), 0.3) 50%, transparent 100%)",
+                  backgroundSize: "200% 100%",
+                  backgroundClip: "text",
+                }}
+              >
+                {name}
+              </motion.span>
+            </motion.h3>
+            <motion.p 
+              className="text-sm text-muted-foreground font-medium mt-1"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ 
+                duration: 0.4, 
+                delay: delay + 0.3,
+                ease: "easeOut"
+              }}
+            >
               {designation}
-            </p>
+            </motion.p>
           </div>
         </div>
       </DialogTrigger>
       
       <DialogContent className="sm:max-w-md">
         <div className="flex flex-col items-center space-y-4 p-4">
-          <div className="w-32 h-32 rounded-full overflow-hidden ring-4 ring-primary/20">
+          <motion.div 
+            className="w-32 h-32 rounded-full overflow-hidden ring-4 ring-primary/20"
+            initial={{ scale: 0, rotate: -180 }}
+            animate={{ scale: 1, rotate: 0 }}
+            transition={{ 
+              type: "spring",
+              stiffness: 200,
+              damping: 15,
+              duration: 0.6
+            }}
+          >
             <img
               src={image}
               alt={name}
               className="w-full h-full object-cover object-center"
             />
-          </div>
+          </motion.div>
           
           <div className="text-center">
-            <h3 className="text-2xl font-bold text-foreground mb-2">
-              {name}
-            </h3>
-            <p className="text-muted-foreground font-medium">
+            <motion.h3 
+              className="text-2xl font-bold text-foreground mb-2 relative inline-block"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+            >
+              <motion.span
+                className="inline-block bg-gradient-to-r from-primary via-primary-glow to-primary bg-clip-text"
+                initial={{ backgroundPosition: "0% center" }}
+                animate={{ backgroundPosition: "200% center" }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+                style={{
+                  backgroundSize: "200% auto",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text"
+                }}
+              >
+                {name}
+              </motion.span>
+            </motion.h3>
+            <motion.p 
+              className="text-muted-foreground font-medium"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.4 }}
+            >
               {designation}
-            </p>
+            </motion.p>
           </div>
           
           <div className="flex gap-4 pt-4">

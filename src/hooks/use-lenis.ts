@@ -5,15 +5,15 @@ export const useLenis = () => {
   useEffect(() => {
     // Initialize Lenis
     const lenis = new Lenis({
-      duration: 2,
+      duration: 1.0,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 0.8,
-      touchMultiplier: 1.7,
+      wheelMultiplier: 1.2,
+      touchMultiplier: 2,
       infinite: false,
-      syncTouch: true,
+      syncTouch: false,
     });
 
     // Request animation frame loop
