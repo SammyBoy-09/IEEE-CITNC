@@ -1,0 +1,624 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* IEEE Blue & White Theme */
+    --background: 0 0% 100%;
+    --foreground: 210 100% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 100% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 100% 20%;
+
+    /* IEEE Primary Blue */
+    --primary: 200 100% 35%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 200 100% 45%;
+    
+    /* IEEE Secondary */
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 200 100% 35%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 210 20% 50%;
+
+    --accent: 200 100% 35%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 30% 90%;
+    --input: 210 30% 90%;
+    --ring: 200 100% 35%;
+
+    --radius: 0.75rem;
+    
+    /* Custom IEEE gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(200 100% 35%), hsl(200 100% 45%));
+    --gradient-hero: linear-gradient(135deg, hsl(200 100% 35%) 0%, hsl(210 100% 40%) 100%);
+    
+    /* Shadows */
+    --shadow-card: 0 4px 20px -4px hsl(200 100% 35% / 0.15);
+    --shadow-hover: 0 8px 30px -6px hsl(200 100% 35% / 0.25);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 210 100% 8%;
+    --foreground: 0 0% 100%;
+
+    --card: 210 100% 10%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 210 100% 10%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 200 100% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 15%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 40% 15%;
+    --muted-foreground: 210 20% 70%;
+
+    --accent: 200 100% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 40% 20%;
+    --input: 210 40% 20%;
+    --ring: 200 100% 45%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Smooth scroll animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes textGlow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(0, 112, 243, 0.3),
+                 0 0 20px rgba(0, 112, 243, 0.2),
+                 0 0 30px rgba(0, 112, 243, 0.1);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(0, 112, 243, 0.5),
+                 0 0 30px rgba(0, 112, 243, 0.3),
+                 0 0 40px rgba(0, 112, 243, 0.2);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.8s ease-out forwards;
+}
+
+/* Team Carousel Styles for Mobile */
+.team-carousel-wrapper {
+  position: relative;
+  padding: 2rem 0;
+  overflow: hidden;
+}
+
+.carousel-title {
+  font-size: 3rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-family: "Arial Black", "Arial Bold", Arial, sans-serif;
+  background: linear-gradient(
+    to bottom,
+    hsl(200 100% 35% / 35%) 30%,
+    rgb(255 255 255 / 0%) 76%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.carousel-container-mobile {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  perspective: 1000px;
+  margin: 2rem 0;
+}
+
+.carousel-track-mobile {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carousel-card-mobile {
+  position: absolute;
+  width: 220px;
+  height: 300px;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+}
+
+.carousel-card-mobile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carousel-card-mobile.center {
+  z-index: 10;
+  transform: scale(1.1) translateZ(0);
+}
+
+.carousel-card-mobile.center img {
+  filter: none;
+}
+
+.carousel-card-mobile.left-2 {
+  z-index: 1;
+  transform: translateX(-280px) scale(0.75) translateZ(-300px);
+  opacity: 0.5;
+}
+
+.carousel-card-mobile.left-2 img {
+  filter: grayscale(100%);
+}
+
+.carousel-card-mobile.left-1 {
+  z-index: 5;
+  transform: translateX(-140px) scale(0.85) translateZ(-100px);
+  opacity: 0.8;
+}
+
+.carousel-card-mobile.left-1 img {
+  filter: grayscale(80%);
+}
+
+.carousel-card-mobile.right-1 {
+  z-index: 5;
+  transform: translateX(140px) scale(0.85) translateZ(-100px);
+  opacity: 0.8;
+}
+
+.carousel-card-mobile.right-1 img {
+  filter: grayscale(80%);
+}
+
+.carousel-card-mobile.right-2 {
+  z-index: 1;
+  transform: translateX(280px) scale(0.75) translateZ(-300px);
+  opacity: 0.5;
+}
+
+.carousel-card-mobile.right-2 img {
+  filter: grayscale(100%);
+}
+
+.carousel-card-mobile.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.5);
+}
+
+.member-info-mobile {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 0 1rem;
+}
+
+.member-name-mobile {
+  color: hsl(200 100% 35%);
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.member-name-mobile::before,
+.member-name-mobile::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  width: 60px;
+  height: 2px;
+  background: hsl(200 100% 35%);
+  margin-top: 8px;
+}
+
+.member-name-mobile::before {
+  left: -70px;
+}
+
+.member-name-mobile::after {
+  right: -70px;
+}
+
+.member-role-mobile {
+  color: #848696;
+  font-size: 1.1rem;
+  font-weight: 500;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 0.5rem;
+}
+
+.dots-mobile {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+.dot-mobile {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: hsla(200, 100%, 35%, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot-mobile.active {
+  background: hsl(200 100% 35%);
+  transform: scale(1.3);
+}
+
+.nav-arrow-mobile {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: hsla(200, 100%, 35%, 0.7);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.3s ease;
+  border: none;
+  outline: none;
+}
+
+.nav-arrow-mobile:hover,
+.nav-arrow-mobile:active {
+  background: hsl(200 100% 35%);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.nav-arrow-mobile.left {
+  left: 10px;
+}
+
+.nav-arrow-mobile.right {
+  right: 10px;
+}
+
+@media (max-width: 380px) {
+  .carousel-title {
+    font-size: 2.5rem;
+  }
+
+  .carousel-card-mobile {
+    width: 180px;
+    height: 260px;
+  }
+
+  .carousel-card-mobile.left-2 {
+    transform: translateX(-230px) scale(0.7) translateZ(-300px);
+  }
+
+  .carousel-card-mobile.left-1 {
+    transform: translateX(-110px) scale(0.8) translateZ(-100px);
+  }
+
+  .carousel-card-mobile.right-1 {
+    transform: translateX(110px) scale(0.8) translateZ(-100px);
+  }
+
+  .carousel-card-mobile.right-2 {
+    transform: translateX(230px) scale(0.7) translateZ(-300px);
+  }
+
+  .member-name-mobile {
+    font-size: 1.5rem;
+  }
+
+  .member-name-mobile::before,
+  .member-name-mobile::after {
+    width: 40px;
+  }
+
+  .member-name-mobile::before {
+    left: -50px;
+  }
+
+  .member-name-mobile::after {
+    right: -50px;
+  }
+
+  .member-role-mobile {
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  /* Prevent body scroll when mobile menu is open */
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  /* Touch-friendly tap targets - ensure all interactive elements are 44px minimum */
+  button, a, input, select, textarea, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Better spacing for mobile readability */
+  h1 {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    line-height: 1.3;
+  }
+
+  h3 {
+    font-size: clamp(1.25rem, 3.5vw, 1.75rem);
+    line-height: 1.35;
+  }
+
+  p {
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+    line-height: 1.6;
+  }
+
+  /* Reduce animations on mobile for performance */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Better text readability on mobile */
+  body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Optimize blur effects on mobile for better performance */
+  .blur-3xl {
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+
+  /* Prevent horizontal overflow */
+  body, html {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  /* Better touch scrolling on iOS */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Optimize images for mobile */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Better form controls on mobile */
+  input, select, textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+
+  /* Card spacing optimization */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Small mobile devices (320px - 374px) */
+@media (max-width: 374px) {
+  h1 {
+    font-size: clamp(1.5rem, 5vw, 1.75rem);
+  }
+
+  h2 {
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
+  }
+
+  /* Tighter spacing for very small screens */
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+
+/* Tablet breakpoint optimizations (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Optimize for tablet touch targets */
+  button, a[role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Better spacing for tablets */
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
