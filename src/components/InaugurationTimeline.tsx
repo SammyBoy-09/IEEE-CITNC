@@ -29,6 +29,19 @@ const InaugurationTimeline = ({ isOpen, onClose, images = [], title = "IEEE Stud
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
 
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   const timelineEvents: TimelineEvent[] = [
     { time: "10:00 am", event: "Welcoming of the Guest", duration: "20 mins", icon: Users, color: "from-blue-400 to-blue-600", position: 'bottom' },
     { time: "10:20 am", event: "Lighting of the Lamp", duration: "15 mins", icon: Lightbulb, color: "from-amber-400 to-amber-600", position: 'top' },
@@ -123,6 +136,7 @@ const InaugurationTimeline = ({ isOpen, onClose, images = [], title = "IEEE Stud
               stiffness: 400,
               duration: 0.5
             }}
+            onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
             <div className="relative bg-gradient-to-r from-primary to-primary-glow p-4 sm:p-6 md:p-8 overflow-hidden flex-shrink-0">
@@ -193,23 +207,26 @@ const InaugurationTimeline = ({ isOpen, onClose, images = [], title = "IEEE Stud
                 </motion.p>
               </motion.div>
               
-              <motion.div
-                initial={{ opacity: 0, scale: 0, rotate: -90 }}
-                animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                transition={{ delay: 0.4, type: "spring", damping: 20, stiffness: 300 }}
-                className="absolute top-2 right-2 sm:top-4 sm:right-4 z-20"
-              >
+              <div className="absolute top-2 right-2 sm:top-4 sm:right-4 z-20">
                 <button
-                  className="text-white hover:bg-white/20 rounded-full h-10 w-10 sm:min-h-[44px] sm:min-w-[44px] hover:rotate-90 transition-all duration-300 hover:scale-110"
+                  className="text-white hover:bg-white/20 rounded-full h-10 w-10 sm:min-h-[44px] sm:min-w-[44px] transition-all duration-300"
                   onClick={onClose}
                 >
                   <X className="h-5 w-5 sm:h-6 sm:w-6" />
                 </button>
-              </motion.div>
+              </div>
             </div>
 
             {/* Content */}
-            <div className="flex-1 overflow-y-auto overflow-x-hidden min-h-0">
+            <div 
+              className="flex-1 overflow-y-auto overflow-x-hidden min-h-0"
+              style={{ 
+                overscrollBehavior: 'contain',
+                WebkitOverflowScrolling: 'touch'
+              }}
+              onWheel={(e) => e.stopPropagation()}
+              onTouchMove={(e) => e.stopPropagation()}
+            >
               {/* Hero Section */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -297,9 +314,16 @@ const InaugurationTimeline = ({ isOpen, onClose, images = [], title = "IEEE Stud
                     </div>
 
                     {description && (
-                      <motion.p className="mt-3 text-sm text-muted-foreground px-2" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
-                        {description}
-                      </motion.p>
+                      <motion.div 
+                        className="mt-6 bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg border-2 border-primary/20"
+                        initial={{ opacity: 0 }} 
+                        animate={{ opacity: 1 }} 
+                        transition={{ delay: 0.2 }}
+                      >
+                        <div className="text-gray-900 dark:text-gray-100 whitespace-pre-line text-sm sm:text-base leading-relaxed">
+                          {description}
+                        </div>
+                      </motion.div>
                     )}
                   </div>
                 ) : (

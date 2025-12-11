@@ -17,9 +17,6 @@ const pillars = [
           <li>
             <strong>Manga Story Contest:</strong> A creative initiative that blends storytelling with engineering concepts, inspiring young girls by presenting STEM through relatable characters and engaging narratives.
           </li>
-          <li>
-            <strong>STEM Pathway Promotion:</strong> Awareness campaigns, school collaborations, and digital learning initiatives that guide girls toward clear STEM education and career pathways.
-          </li>
         </ul>
 
         <p className="mt-3 text-sm"><strong>Goal:</strong> To spark early motivation, nurture creativity, and build confidence among young girls to choose STEM as a future career.</p>
@@ -41,9 +38,6 @@ const pillars = [
           </li>
           <li>
             <strong>Seminars and Technical Sessions:</strong> Regular knowledge-sharing forums where participants gain exposure to cutting-edge technologies and industry trends.
-          </li>
-          <li>
-            <strong>Local Ambassador Programs:</strong> Community-based initiatives led by trained ambassadors who bring workshops, STEM camps, and awareness programs to schools, colleges, and local communities worldwide.
           </li>
         </ul>
 
@@ -67,9 +61,6 @@ const pillars = [
           <li>
             <strong>Participation Through WIE Affinity Groups:</strong> Encouraging women to take part in panel discussions, competitions, hackathons, technical talks, and leadership roles within IEEE Women in Engineering (WIE).
           </li>
-          <li>
-            <strong>Mentorship and Guidance Programs:</strong> Pairing students and early-career professionals with experienced mentors who provide career guidance, motivation, and long-term support.
-          </li>
         </ul>
 
         <p className="mt-3 text-sm"><strong>Goal:</strong> To create a culture of support where women feel valued, seen, and motivated to advance in their STEM journeys.</p>
@@ -91,12 +82,6 @@ const pillars = [
           </li>
           <li>
             <strong>Grants, Scholarships & Funding Support:</strong> Financial assistance to help women pursue engineering degrees, research projects, certifications, and participation in conferences.
-          </li>
-          <li>
-            <strong>Inclusive Workplace Promotion:</strong> Advocacy for policies and practices that promote gender equality, flexible work environments, safety, and retention of women in technical careers.
-          </li>
-          <li>
-            <strong>Global Networking Opportunities:</strong> Platforms where women worldwide can connect, collaborate, exchange ideas, and build a strong, supportive STEM community.
           </li>
         </ul>
 

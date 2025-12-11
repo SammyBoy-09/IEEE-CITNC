@@ -147,7 +147,7 @@ const WIELanding = () => {
             </motion.div>
 
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 bg-clip-text text-transparent mb-6 sm:mb-8 leading-tight">
-              Women In Engineering
+              Women in Engineering
             </h1>
             
             <p className="text-xl sm:text-2xl md:text-3xl text-gray-700 max-w-4xl mx-auto mb-10 sm:mb-12 leading-relaxed font-light">

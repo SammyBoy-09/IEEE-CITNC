@@ -91,57 +91,21 @@ const TeamCard = ({ name, designation, image, delay = 0, email, linkedin, phone 
       
       <DialogContent className="w-11/12 max-w-sm sm:max-w-md">
         <div className="flex flex-col items-center space-y-4 p-4">
-          <motion.div 
-            className="w-32 h-32 rounded-full overflow-hidden ring-4 ring-primary/20"
-            initial={{ scale: 0, rotate: -180 }}
-            animate={{ scale: 1, rotate: 0 }}
-            transition={{ 
-              type: "spring",
-              stiffness: 200,
-              damping: 15,
-              duration: 0.6
-            }}
-          >
+          <div className="w-32 h-32 rounded-full overflow-hidden ring-4 ring-primary/20">
             <img
               src={image}
               alt={name}
               className="w-full h-full object-cover object-center"
             />
-          </motion.div>
+          </div>
           
           <div className="text-center">
-            <motion.h3 
-              className="text-2xl font-bold text-foreground mb-2 relative inline-block"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-            >
-              <motion.span
-                className="inline-block bg-gradient-to-r from-primary via-primary-glow to-primary bg-clip-text"
-                initial={{ backgroundPosition: "0% center" }}
-                animate={{ backgroundPosition: "200% center" }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-                style={{
-                  backgroundSize: "200% auto",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text"
-                }}
-              >
-                {name}
-              </motion.span>
-            </motion.h3>
-            <motion.p 
-              className="text-muted-foreground font-medium"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.4 }}
-            >
+            <h3 className="text-2xl font-bold text-foreground mb-2">
+              {name}
+            </h3>
+            <p className="text-muted-foreground font-medium">
               {designation}
-            </motion.p>
+            </p>
           </div>
           
           <div className="flex flex-col sm:flex-row gap-4 pt-4 w-full items-center justify-center">

@@ -23,7 +23,7 @@ const groups = [
   {
     id: 3,
     title: "IEEE - Sensors Council",
-    color: "from-amber-500 to-yellow-400",
+    color: "from-orange-600 to-red-500",
     description: "Focus on sensing technologies and embedded systems.",
     logo: sensorsLogo,
   },
@@ -116,17 +116,13 @@ const AffinityGroups = () => {
                   <div className="relative z-10 h-full flex flex-col justify-between">
                     {/* Header with logo */}
                     <div className="flex items-start gap-4 sm:gap-6 mb-4">
-                      <motion.div
-                        whileHover={{ rotate: 360 }}
-                        transition={{ duration: 0.6 }}
-                        className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl backdrop-blur-md flex items-center justify-center flex-shrink-0 shadow-lg"
-                      >
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl backdrop-blur-md flex items-center justify-center flex-shrink-0 shadow-lg">
                         {g.logo ? (
                           <img src={g.logo} alt={`${g.title} logo`} className="w-12 h-12 sm:w-16 sm:h-16 object-contain drop-shadow-lg" />
                         ) : (
                           <span className="text-xl sm:text-2xl font-bold">{g.title.split(" ").slice(0,2).map(s=>s[0]).join("")}</span>
                         )}
-                      </motion.div>
+                      </div>
 
                       <div className="flex-1 min-w-0">
                         <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2 leading-tight">{g.title}</h3>
