@@ -62,7 +62,7 @@ const EventSchedule = () => {
       isClickable: true
     },
     {
-      title: "Applied Data Science & AI",
+      title: "Decoding Data Science",
       description: "Explore the latest trends in data science and artificial intelligence through hands-on sessions",
       status: "Upcoming - 15th December 2025, 10am",
       images: [techTalk1],
@@ -168,7 +168,7 @@ const EventSchedule = () => {
           </motion.p>
         </motion.div>
         
-        <div ref={eventsRef} className="max-w-5xl mx-auto grid sm:grid-cols-2 gap-5 sm:gap-6 items-stretch">
+        <div ref={eventsRef} className="max-w-5xl mx-auto grid sm:grid-cols-2 gap-5 sm:gap-6 items-stretch auto-rows-fr">
           {events.map((event, index) => (
             <motion.div
               key={index}
@@ -313,7 +313,7 @@ excellence, resilience, and global relevance.`,
                     images: event.images ?? [],
                     title: event.title,
                     date: event.status,
-                    description: `Decoding Data Science – Tech Talk
+                    description: `Decoding Data Science
 
 This session features Mr. Yogabalaji G, a Decision Scientist at Mu Sigma, who shares practical insights into AI, analytics, and real-world data science applications. The talk focuses on industry-relevant knowledge, career guidance, and hands-on perspectives from an experienced professional and mentor, helping students understand how data science is applied beyond theory.`,
                     showTimeline: false
@@ -410,7 +410,7 @@ Mr. Gowrish H B is the Founder of HellCraftTech™, a testament to the power of 
                           variants={itemVariants}
                           whileHover={{ scale: 1.06 }}
                           transition={{ type: 'spring', stiffness: 300 }}
-                          className={`${event.images.length === 1 ? 'w-full max-w-md h-64' : 'w-full h-24'} object-contain rounded-md border border-primary/10`}
+                          className={`${event.images.length === 1 ? 'w-full max-h-48 object-contain' : 'w-full h-24 object-cover'} rounded-md border border-primary/10`}
                         />
                       ))}
                     </motion.div>

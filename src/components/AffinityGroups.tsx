@@ -116,9 +116,9 @@ const AffinityGroups = () => {
                   <div className="relative z-10 h-full flex flex-col justify-between">
                     {/* Header with logo */}
                     <div className="flex items-start gap-4 sm:gap-6 mb-4">
-                      <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl backdrop-blur-md flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white backdrop-blur-md flex items-center justify-center flex-shrink-0 shadow-lg p-2">
                         {g.logo ? (
-                          <img src={g.logo} alt={`${g.title} logo`} className="w-12 h-12 sm:w-16 sm:h-16 object-contain drop-shadow-lg" />
+                          <img src={g.logo} alt={`${g.title} logo`} className="w-full h-full object-contain" />
                         ) : (
                           <span className="text-xl sm:text-2xl font-bold">{g.title.split(" ").slice(0,2).map(s=>s[0]).join("")}</span>
                         )}

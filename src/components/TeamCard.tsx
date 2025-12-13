@@ -141,9 +141,11 @@ const TeamCard = ({ name, designation, image, delay = 0, email, linkedin, phone 
 
             {phone && (
               <a
-                href={`tel:${phone}`}
+                href={`https://wa.me/${phone.replace(/\D/g, '')}`}
                 className="w-14 h-14 sm:w-12 sm:h-12 rounded-full bg-primary flex items-center justify-center hover:bg-primary/90 transition-all duration-300 hover:scale-110"
-                aria-label={`Call ${name}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`WhatsApp ${name}`}
                 role="button"
               >
                 <Phone className="h-5 w-5 text-primary-foreground" />

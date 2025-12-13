@@ -274,7 +274,7 @@ const InaugurationTimeline = ({ isOpen, onClose, images = [], title = "IEEE Stud
                           key={images[currentIndex]}
                           src={images[currentIndex]}
                           alt={`Slide ${currentIndex + 1}`}
-                          className="w-full h-56 sm:h-72 md:h-96 object-cover"
+                          className="w-full h-[60vh] sm:h-[70vh] object-contain bg-gray-900"
                           initial={{ opacity: 0, x: 30, scale: 0.98 }}
                           animate={{ opacity: 1, x: 0, scale: 1 }}
                           exit={{ opacity: 0, x: -30, scale: 0.98 }}

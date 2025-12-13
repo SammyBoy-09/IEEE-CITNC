@@ -41,11 +41,11 @@ const eventCards = [
 
 const Events = () => {
   return (
-    <section className="py-12">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-foreground">Upcoming WIE Events</h2>
-          <p className="text-muted-foreground mt-2">All events listed below are upcoming — stay tuned for dates and registration details.</p>
+    <section className="py-16 sm:py-20 bg-gradient-to-b from-purple-50 to-white">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-3">Upcoming Events</h2>
+          <p className="text-muted-foreground text-lg">All events listed below are upcoming — stay tuned for dates and registration details.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

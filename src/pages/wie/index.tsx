@@ -1,83 +1,105 @@
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import wieLogo from "@/assets/affinity/IEEE WIE SOCIETY LOGO.png";
-import DecorativeAnimations from "@/components/DecorativeAnimations";
+import About from "./About";
+import Pillars from "./Pillars";
+import Events from "./Events";
+import Benefits from "./Benefits";
+import Team from "./Team";
 
 const WIELanding = () => {
   const navigate = useNavigate();
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const navItems = [
-    { to: "about", label: "About" },
-    { to: "pillars", label: "Our Core Pillars" },
-    { to: "events", label: "Our Events" },
-    { to: "benefits", label: "Benefits" },
-    { to: "team", label: "Meet The Team" },
-    { to: "contact", label: "Contact Us" },
+    { label: "Home", action: () => window.scrollTo({ top: 0, behavior: 'smooth' }) },
+    { label: "About", action: () => scrollToSection('wie-about') },
+    { label: "Events", action: () => scrollToSection('wie-events') },
+    { label: "Benefits", action: () => scrollToSection('wie-benefits') },
+    { label: "Team", action: () => scrollToSection('wie-team') },
   ];
 
   return (
     <div className="min-h-screen bg-background">
-      <DecorativeAnimations />
       
       {/* Header Section */}
       <motion.header 
-        className="fixed top-0 left-0 right-0 z-50 bg-white/98 backdrop-blur-md border-b-2 border-purple-100 shadow-sm"
+        className="fixed top-0 left-0 right-0 z-50 bg-white backdrop-blur-md border-b border-purple-100 shadow-sm"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
-          <div className="flex items-center justify-between">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="flex items-center justify-between h-16">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
+              className="flex items-center gap-3"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center p-2 shadow-md">
+                <img src={wieLogo} alt="WIE logo" className="w-full h-full object-contain" />
+              </div>
+              <div className="hidden sm:block">
+                <h1 className="text-sm font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent leading-tight">IEEE WIE</h1>
+                <p className="text-xs text-gray-600 leading-tight font-medium">Women In Engineering</p>
+              </div>
+            </motion.div>
+
+            <nav className="hidden md:flex items-center gap-1">
+              {navItems.map((item, index) => (
+                <motion.button
+                  key={item.label}
+                  onClick={item.action}
+                  className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-purple-600 hover:bg-purple-50 rounded-md transition-colors"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: 0.3 + index * 0.05 }}
+                >
+                  {item.label}
+                </motion.button>
+              ))}
+            </nav>
+
+            <motion.div
+              className="flex items-center gap-2"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
             >
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => navigate("/")}
-                className="flex items-center gap-2 hover:bg-purple-50 text-gray-700 hover:text-purple-700"
+                className="hidden sm:flex items-center gap-2 hover:bg-purple-50 text-gray-700 hover:text-purple-700"
               >
                 <ArrowLeft className="h-4 w-4" />
-                <span className="hidden sm:inline font-semibold">Back to Main Site</span>
+                <span className="text-sm font-medium">Back</span>
               </Button>
-            </motion.div>
-
-            <motion.div
-              className="flex items-center gap-3"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center p-2 shadow-md">
-                <img src={wieLogo} alt="WIE logo" className="w-full h-full object-contain" />
-              </div>
-              <div className="hidden md:block">
-                <h1 className="text-base font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent leading-tight">IEEE WIE</h1>
-                <p className="text-xs text-gray-600 leading-tight font-medium">Women In Engineering</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-            >
-              <Link to="contact">
-                <Button size="sm" className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 shadow-md hover:shadow-lg font-semibold">
-                  Join WIE
-                </Button>
-              </Link>
+              <Button 
+                size="sm" 
+                onClick={() => {
+                  navigate('/', { state: { scrollTo: 'contact' } });
+                }}
+                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 shadow-md hover:shadow-lg font-semibold text-sm"
+              >
+                Join Us
+              </Button>
             </motion.div>
           </div>
         </div>
       </motion.header>
 
-      {/* Hero Section */}
-      <section className="relative min-h-[65vh] flex items-center justify-center bg-gradient-to-br from-purple-50 via-pink-50 to-purple-100 overflow-hidden pt-20">
+      {/* Hero Section - Full Screen */}
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 via-pink-50 to-purple-100 overflow-hidden">
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div 
@@ -146,7 +168,7 @@ const WIELanding = () => {
               <span>Empowering Women Engineers</span>
             </motion.div>
 
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 bg-clip-text text-transparent mb-6 sm:mb-8 leading-tight">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 bg-clip-text text-transparent mb-6 sm:mb-8 leading-tight uppercase">
               Women in Engineering
             </h1>
             
@@ -160,23 +182,16 @@ const WIELanding = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <Link to="about">
-                <Button 
-                  size="lg" 
-                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white shadow-xl hover:shadow-2xl transition-all duration-300 min-w-[180px] text-base font-semibold"
-                >
-                  Discover More
-                </Button>
-              </Link>
-              <Link to="contact">
-                <Button 
-                  size="lg" 
-                  variant="outline"
-                  className="bg-white border-2 border-purple-300 text-purple-600 hover:bg-purple-50 hover:border-purple-400 shadow-lg hover:shadow-xl min-w-[180px] text-base font-semibold"
-                >
-                  Join Our Community
-                </Button>
-              </Link>
+              <Button 
+                size="lg" 
+                onClick={() => {
+                  const element = document.getElementById('wie-content');
+                  element?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white shadow-xl hover:shadow-2xl transition-all duration-300 min-w-[180px] text-base font-semibold"
+              >
+                Discover More
+              </Button>
             </motion.div>
           </motion.div>
         </div>
@@ -189,57 +204,22 @@ const WIELanding = () => {
         </div>
       </section>
 
-      {/* Navigation Section */}
-      <section className="py-12 sm:py-16 bg-white">
-        <div className="container mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-10"
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-3">
-              Explore WIE
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-purple-600 to-pink-600 mx-auto rounded-full" />
-          </motion.div>
-
-          <nav className="flex flex-wrap justify-center gap-3 sm:gap-4">
-            {navItems.map((item, index) => (
-              <motion.div
-                key={item.to}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                whileHover={{ y: -2 }}
-              >
-                <Link to={item.to}>
-                  <Button
-                    variant="outline"
-                    className="bg-gradient-to-br from-purple-50 to-pink-50 hover:from-purple-100 hover:to-pink-100 border-2 border-purple-200 hover:border-purple-400 text-purple-700 hover:text-purple-900 transition-all duration-300 shadow-md hover:shadow-lg font-semibold"
-                  >
-                    {item.label}
-                  </Button>
-                </Link>
-              </motion.div>
-            ))}
-          </nav>
+      {/* Content Sections */}
+      <div id="wie-content">
+        <div id="wie-about">
+          <About />
         </div>
-      </section>
-
-      {/* Content Section */}
-      <section className="py-12 sm:py-16 bg-gradient-to-b from-white via-purple-50/30 to-white">
-        <div className="container mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="bg-white rounded-3xl shadow-2xl border-2 border-purple-100 p-8 sm:p-10 md:p-12"
-          >
-            <Outlet />
-          </motion.div>
+        <Pillars />
+        <div id="wie-events">
+          <Events />
         </div>
-      </section>
+        <div id="wie-benefits">
+          <Benefits />
+        </div>
+        <div id="wie-team">
+          <Team />
+        </div>
+      </div>
 
       {/* Footer */}
       <footer className="bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 text-white py-10">
