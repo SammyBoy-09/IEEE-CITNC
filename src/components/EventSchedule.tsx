@@ -60,6 +60,20 @@ const EventSchedule = () => {
       isClickable: true
     },
     {
+      title: "Applied Data Science & AI",
+      description: "Explore the latest trends in data science and artificial intelligence through hands-on sessions",
+      status: "Upcoming - 15th December 2025, 10am",
+      images: [],
+      isClickable: true
+    },
+    {
+      title: "From Idea to Startup",
+      description: "Learn the journey from conceptualization to building a successful startup",
+      status: "Upcoming - 15th December 2025, 2pm",
+      images: [],
+      isClickable: true
+    },
+    {
       title: "Technical",
       description: "Hands-on workshops on cutting-edge technologies and tools",
       status: "Upcoming",
@@ -284,6 +298,50 @@ exceptional eloquence. They expounded upon:
 Through collective ambition, intellectual discipline, and unwavering integrity, the
 IEEE Student Branch at CITNC now steps confidently into a future defined by
 excellence, resilience, and global relevance.`,
+                    showTimeline: false
+                  });
+
+                  setIsTimelineOpen(true);
+                  return;
+                }
+
+                // Applied Data Science & AI session
+                if (event.title === "Applied Data Science & AI") {
+                  setTimelineData({
+                    images: event.images ?? [],
+                    title: event.title,
+                    date: event.status,
+                    description: `Decoding Data Science – Tech Talk
+
+This session features Mr. Yogabalaji G, a Decision Scientist at Mu Sigma, who shares practical insights into AI, analytics, and real-world data science applications. The talk focuses on industry-relevant knowledge, career guidance, and hands-on perspectives from an experienced professional and mentor, helping students understand how data science is applied beyond theory.`,
+                    showTimeline: false
+                  });
+
+                  setIsTimelineOpen(true);
+                  return;
+                }
+
+                // From Idea to Startup session
+                if (event.title === "From Idea to Startup") {
+                  setTimelineData({
+                    images: event.images ?? [],
+                    title: event.title,
+                    date: event.status,
+                    description: `This talk is led by Mr. Gowrish H B, Founder of HellCraftTech™, who explains his journey of building a startup while still in college.
+
+The session inspires students to explore entrepreneurship, emphasizing passion, experimentation, and self-driven innovation, while guiding them on how to turn ideas into real startups.
+
+Key Highlights:
+
+• Building a startup while pursuing college education
+• The entrepreneurial mindset: passion, experimentation, and innovation
+• Practical steps to transform ideas into viable startups
+• Overcoming challenges as a student entrepreneur
+• Self-driven innovation and creative problem-solving
+• Real-world lessons from startup journey
+
+About the Speaker:
+Mr. Gowrish H B is the Founder of HellCraftTech™, a testament to the power of young entrepreneurship. As a student entrepreneur, he successfully built his startup from the ground up while managing academic responsibilities. His journey serves as an inspiration for students looking to venture into entrepreneurship, demonstrating that age and experience are not barriers to innovation and business success.`,
                     showTimeline: false
                   });
 
