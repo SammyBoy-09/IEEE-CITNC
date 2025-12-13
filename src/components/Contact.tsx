@@ -19,16 +19,23 @@ const Contact = () => {
     setSubmitStatus('idle');
 
     try {
-      const response = await fetch('https://formspree.io/f/gowrishhb5@gmail.com', {
+      const formElement = document.createElement('form');
+      formElement.action = 'https://formspree.io/f/ieee.nc@cambridge.edu.in';
+      formElement.method = 'POST';
+      
+      const response = await fetch('https://formspree.io/f/ieee.nc@cambridge.edu.in', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
           message: formData.message,
+          _replyto: formData.email,
+          _subject: `New Contact Form Submission from ${formData.name}`,
         }),
       });
 
