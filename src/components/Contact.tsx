@@ -19,23 +19,21 @@ const Contact = () => {
     setSubmitStatus('idle');
 
     try {
-      const formElement = document.createElement('form');
-      formElement.action = 'https://formspree.io/f/ieee.nc@cambridge.edu.in';
-      formElement.method = 'POST';
-      
-      const response = await fetch('https://formspree.io/f/ieee.nc@cambridge.edu.in', {
+      // Using Web3Forms - Free service, no signup needed
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
         body: JSON.stringify({
+          access_key: 'YOUR_WEB3FORMS_ACCESS_KEY', // Get free key from web3forms.com
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
           message: formData.message,
-          _replyto: formData.email,
-          _subject: `New Contact Form Submission from ${formData.name}`,
+          subject: `New Contact Form Submission from ${formData.name}`,
+          from_name: 'IEEE CITNC Website',
         }),
       });
 
