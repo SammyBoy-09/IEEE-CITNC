@@ -401,7 +401,7 @@ Mr. Gowrish H B is the Founder of HellCraftTech™, a testament to the power of 
 
                   {/* Image gallery: three thumbnails per event */}
                   {event.images && event.images.length > 0 ? (
-                    <motion.div initial="hidden" animate="visible" variants={galleryVariants} className="mt-4 grid grid-cols-3 gap-2">
+                    <motion.div initial="hidden" animate="visible" variants={galleryVariants} className={`mt-4 gap-2 ${event.images.length === 1 ? 'flex justify-center' : 'grid grid-cols-3'}`}>
                       {event.images.map((img, i) => (
                         <motion.img
                           key={i}
@@ -410,7 +410,7 @@ Mr. Gowrish H B is the Founder of HellCraftTech™, a testament to the power of 
                           variants={itemVariants}
                           whileHover={{ scale: 1.06 }}
                           transition={{ type: 'spring', stiffness: 300 }}
-                          className="w-full h-24 object-cover rounded-md border border-primary/10"
+                          className={`${event.images.length === 1 ? 'w-full max-w-md h-64' : 'w-full h-24'} object-contain rounded-md border border-primary/10`}
                         />
                       ))}
                     </motion.div>
