@@ -45,7 +45,7 @@ const WIELanding = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <img src="/src/assets/affinity/IEEE%20WIE%20SOCIETY%20LOGO.png" alt="WIE logo" className="h-10 sm:h-12 w-auto object-contain" />
+              <img src={wieLogo} alt="WIE logo" className="h-10 sm:h-12 w-auto object-contain" />
               <div className="hidden sm:block">
                 <h1 className="text-sm font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent leading-tight">IEEE WIE</h1>
                 <p className="text-xs text-gray-600 leading-tight font-medium">Women In Engineering</p>
