@@ -45,9 +45,7 @@ const WIELanding = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center p-2 shadow-md">
-                <img src={wieLogo} alt="WIE logo" className="w-full h-full object-contain" />
-              </div>
+              <img src="/src/assets/affinity/IEEE%20WIE%20SOCIETY%20LOGO.png" alt="WIE logo" className="h-10 sm:h-12 w-auto object-contain" />
               <div className="hidden sm:block">
                 <h1 className="text-sm font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent leading-tight">IEEE WIE</h1>
                 <p className="text-xs text-gray-600 leading-tight font-medium">Women In Engineering</p>

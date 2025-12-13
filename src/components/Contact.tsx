@@ -10,14 +10,40 @@ const Contact = () => {
     phone: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    const subject = `Contact Form: Message from ${formData.name}`;
-    const body = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0APhone: ${formData.phone}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`;
-    
-    window.location.href = `mailto:ieee.nc@cambridge.edu.in?subject=${encodeURIComponent(subject)}&body=${body}`;
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('https://formspree.io/f/gowrishhb5@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', phone: '', message: '' });
+        setTimeout(() => setSubmitStatus('idle'), 5000);
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -86,9 +112,9 @@ const Contact = () => {
 
             {/* Map */}
             <Card className="p-4 overflow-hidden hover:shadow-[var(--shadow-hover)] transition-all duration-300">
-              <a href="https://maps.app.goo.gl/snsToXXUUCZWRmZP8" target="_blank" rel="noopener noreferrer" className="block">
+              <a href="https://maps.app.goo.gl/vfoay8YrUXoMNuKX8" target="_blank" rel="noopener noreferrer" className="block">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.768643347892!2d77.49127937507629!3d12.987463787324952!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae23eb6557c5e9%3A0x583b4b1a6e0a7f4f!2sCambridge%20Institute%20of%20Technology%20North%20Campus!5e0!3m2!1sen!2sin!4v1734178800000!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4187.078612996439!2d77.60700207508124!3d13.246194987095006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb1e1d371a83ec5%3A0x824918d7736a4ed2!2sCambridge%20Institute%20Of%20Technology%20North%20Campus!5e1!3m2!1sen!2sin!4v1765657105789!5m2!1sen!2sin"
                   width="100%"
                   height="300"
                   style={{ border: 0 }}
@@ -180,14 +206,27 @@ const Contact = () => {
 
               <Button
                 type="submit"
-                className="w-full bg-green-500 hover:bg-green-600 text-white py-6 rounded-lg font-semibold text-base flex items-center justify-center gap-2 transition-all duration-300"
+                disabled={isSubmitting}
+                className="w-full bg-green-500 hover:bg-green-600 disabled:bg-gray-400 text-white py-6 rounded-lg font-semibold text-base flex items-center justify-center gap-2 transition-all duration-300"
               >
                 <Send className="h-5 w-5" />
-                Send via Email
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </Button>
 
+              {submitStatus === 'success' && (
+                <p className="text-sm text-center text-green-600 font-medium mt-2">
+                  ✓ Message sent successfully! We'll get back to you soon.
+                </p>
+              )}
+              
+              {submitStatus === 'error' && (
+                <p className="text-sm text-center text-red-600 font-medium mt-2">
+                  ✗ Failed to send message. Please email us directly at ieee.nc@cambridge.edu.in
+                </p>
+              )}
+
               <p className="text-xs text-center text-muted-foreground mt-4">
-                Your message will open in your default email client. You can review it before sending.
+                We'll respond to your inquiry as soon as possible.
               </p>
             </form>
           </Card>
