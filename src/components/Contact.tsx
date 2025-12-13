@@ -70,13 +70,13 @@ const Contact = () => {
           {/* Left side - Contact cards and map stacked vertically */}
           <div className="flex flex-col gap-6">
             {/* Contact Cards */}
-            <Card className="p-6 hover:shadow-[var(--shadow-hover)] transition-all duration-300 group">
+            <Card className="p-6 hover:shadow-[var(--shadow-hover)] transition-all duration-300 group hover:border-primary/50">
               <div className="flex items-center gap-4">
-                <div className="w-14 h-14 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="w-14 h-14 bg-primary rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                   <Globe className="h-7 w-7 text-white" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-semibold text-orange-500 mb-1 text-sm">Website</h3>
+                  <h3 className="font-semibold text-primary mb-1 text-sm">Website</h3>
                   <p className="text-base text-foreground break-words">
                     <a href="https://ieee.citnc.co.in/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">ieee.citnc.co.in</a>
                   </p>
@@ -84,13 +84,13 @@ const Contact = () => {
               </div>
             </Card>
 
-            <Card className="p-6 hover:shadow-[var(--shadow-hover)] transition-all duration-300 group">
+            <Card className="p-6 hover:shadow-[var(--shadow-hover)] transition-all duration-300 group hover:border-primary/50">
               <div className="flex items-center gap-4">
-                <div className="w-14 h-14 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="w-14 h-14 bg-primary rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                   <Mail className="h-7 w-7 text-white" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-semibold text-orange-500 mb-1 text-sm">Email</h3>
+                  <h3 className="font-semibold text-primary mb-1 text-sm">Email</h3>
                   <p className="text-base text-foreground break-words">
                     <a href="mailto:ieee.nc@cambridge.edu.in" className="hover:text-primary transition-colors">ieee.nc@cambridge.edu.in</a>
                   </p>
@@ -98,13 +98,13 @@ const Contact = () => {
               </div>
             </Card>
             
-            <Card className="p-6 hover:shadow-[var(--shadow-hover)] transition-all duration-300 group">
+            <Card className="p-6 hover:shadow-[var(--shadow-hover)] transition-all duration-300 group hover:border-primary/50">
               <div className="flex items-center gap-4">
-                <div className="w-14 h-14 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="w-14 h-14 bg-primary rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                   <MapPin className="h-7 w-7 text-white" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-semibold text-orange-500 mb-1 text-sm">Location</h3>
+                  <h3 className="font-semibold text-primary mb-1 text-sm">Location</h3>
                   <p className="text-base text-foreground">Bangalore</p>
                 </div>
               </div>
@@ -128,12 +128,12 @@ const Contact = () => {
           </div>
 
           {/* Right side - Contact Form */}
-          <Card className="p-8 hover:shadow-[var(--shadow-hover)] transition-all duration-300 h-fit border-2 border-orange-200">
+          <Card className="p-8 hover:shadow-[var(--shadow-hover)] transition-all duration-300 h-fit border-2 border-primary/20">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
-                <Mail className="h-5 w-5 text-white" />
+              <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                <Send className="h-5 w-5 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-orange-500">Connect via Email</h3>
+              <h3 className="text-xl font-bold text-primary">Send Us a Message</h3>
             </div>
             
             <p className="text-sm text-muted-foreground mb-6">
@@ -153,7 +153,7 @@ const Contact = () => {
                   onChange={handleChange}
                   placeholder="Your Name"
                   required
-                  className="w-full px-4 py-3 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-colors"
                 />
               </div>
 
@@ -169,7 +169,7 @@ const Contact = () => {
                   onChange={handleChange}
                   placeholder="your.email@example.com"
                   required
-                  className="w-full px-4 py-3 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-colors"
                 />
               </div>
 
@@ -184,7 +184,7 @@ const Contact = () => {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="+91 1234567890"
-                  className="w-full px-4 py-3 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-colors"
                 />
               </div>
 
@@ -200,14 +200,14 @@ const Contact = () => {
                   placeholder="Tell us about your interest..."
                   required
                   rows={5}
-                  className="w-full px-4 py-3 rounded-lg border-2 border-orange-200 focus:border-orange-500 focus:outline-none transition-colors resize-none"
+                  className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-colors resize-none"
                 />
               </div>
 
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-green-500 hover:bg-green-600 disabled:bg-gray-400 text-white py-6 rounded-lg font-semibold text-base flex items-center justify-center gap-2 transition-all duration-300"
+                className="w-full bg-primary hover:bg-primary-glow disabled:bg-gray-400 text-white py-6 rounded-lg font-semibold text-base flex items-center justify-center gap-2 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 <Send className="h-5 w-5" />
                 {isSubmitting ? 'Sending...' : 'Send Message'}
