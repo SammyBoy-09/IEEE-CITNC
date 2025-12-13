@@ -13,6 +13,8 @@ import membership3 from "@/assets/events/Membership drive-3.png";
 import inaugural1 from "@/assets/events/Inauguration lamp-SB.png";
 import inaugural2 from "@/assets/events/Addressing the gathering .png";
 import inaugural3 from "@/assets/events/Falicitation .png";
+import techTalk1 from "@/assets/events/Tech Talk.jpg";
+import startup1 from "@/assets/events/Startup idea-GOWRISH H B.jpg";
 
 const EventSchedule = () => {
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation({ threshold: 0.2 });
@@ -63,14 +65,14 @@ const EventSchedule = () => {
       title: "Applied Data Science & AI",
       description: "Explore the latest trends in data science and artificial intelligence through hands-on sessions",
       status: "Upcoming - 15th December 2025, 10am",
-      images: [],
+      images: [techTalk1],
       isClickable: true
     },
     {
       title: "From Idea to Startup",
       description: "Learn the journey from conceptualization to building a successful startup",
       status: "Upcoming - 15th December 2025, 2pm",
-      images: [],
+      images: [startup1],
       isClickable: true
     },
     {
