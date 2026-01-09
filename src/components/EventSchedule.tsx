@@ -14,7 +14,11 @@ import inaugural1 from "@/assets/events/Inauguration lamp-SB.png";
 import inaugural2 from "@/assets/events/Addressing the gathering .png";
 import inaugural3 from "@/assets/events/Falicitation .png";
 import techTalk1 from "@/assets/events/Tech Talk.jpg";
+import techTalk2 from "@/assets/events/Yogabalaji-1.png";
+import techTalk3 from "@/assets/events/Felicitation to yogabalaji.png";
 import startup1 from "@/assets/events/Startup idea-GOWRISH H B.jpg";
+import startup2 from "@/assets/events/Gowrish explaination.png";
+import startup3 from "@/assets/events/Hell Craft tech.png";
 
 const EventSchedule = () => {
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation({ threshold: 0.2 });
@@ -63,16 +67,16 @@ const EventSchedule = () => {
     },
     {
       title: "Decoding Data Science",
-      description: "Explore the latest trends in data science and artificial intelligence through hands-on sessions",
+      description: "An enlightening technical session featuring Yogabalaji, who delved into the fascinating world of data science and artificial intelligence. The event covered cutting-edge trends, practical applications, and hands-on approaches to solving real-world problems using data-driven methodologies. Participants explored machine learning algorithms, data analytics techniques, and AI frameworks, gaining valuable insights into the rapidly evolving field of data science and its impact on modern technology.",
       status: "Upcoming - 15th December 2025, 10am",
-      images: [techTalk1],
+      images: [techTalk1, techTalk2, techTalk3],
       isClickable: true
     },
     {
       title: "From Idea to Startup",
-      description: "Learn the journey from conceptualization to building a successful startup",
+      description: "An inspiring session where Gowrish H B shares his entrepreneurial journey and insights on transforming innovative ideas into successful startups. The event featured Hell Craft Tech, showcasing real-world applications of technology in building and scaling a startup from concept to execution. Participants gained valuable knowledge on ideation, market validation, product development, and the challenges faced by early-stage entrepreneurs.",
       status: "Upcoming - 15th December 2025, 2pm",
-      images: [startup1],
+      images: [startup1, startup2, startup3],
       isClickable: true
     },
     {
@@ -410,7 +414,7 @@ Mr. Gowrish H B is the Founder of HellCraftTech™, a testament to the power of 
                           variants={itemVariants}
                           whileHover={{ scale: 1.06 }}
                           transition={{ type: 'spring', stiffness: 300 }}
-                          className={`${event.images.length === 1 ? 'w-full max-h-48 object-contain' : 'w-full h-24 object-cover'} rounded-md border border-primary/10`}
+                          className={`${event.images.length === 1 ? 'w-full max-h-48 object-contain' : i === 0 ? 'w-full h-24 object-contain' : 'w-full h-24 object-cover'} rounded-md border border-primary/10`}
                         />
                       ))}
                     </motion.div>

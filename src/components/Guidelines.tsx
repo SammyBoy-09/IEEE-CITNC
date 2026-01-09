@@ -37,7 +37,7 @@ const steps: Array<{ title: string; body: string | JSX.Element }> = [
   },
   {
     title: "Step 3: Academic & Login Details",
-    body: `In the search bar, select Cambridge Institute of Tech – North Campus (important: choose NORTH campus).\n\nDegree: BE\n\nSelect your Academic Program.\n\nEnter your tentative graduation month and the correct graduation year based on your semester.\n\nFor "Is your university accredited?" select Do Not Know.\n\nChoose any reasons for joining.\n\nReferring Member Name: Dr. R. Rajaramakrishna Referral Number: 10165439`,
+    body: `In the search bar, select Cambridge Institute of Tech – North Campus (important: choose NORTH campus).\n\nDegree: BE\n\nSelect your Academic Program.\n\nEnter your tentative graduation month and the correct graduation year based on your semester.\n\nFor "Is your university accredited?" select Do Not Know.\n\nChoose any reasons for joining.\n\nReferring Member Name: Dr. R. Rajaramakrishna`,
   },
   {
     title: "Step 4: Payment & Receipt",

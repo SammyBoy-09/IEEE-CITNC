@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import ieeeLogo from "@/assets/ieee-logo.png";
+import ieeeLogo from "@/assets/ieee-logo-new.png";
 import citncLogo from "@/assets/citnc-logo.png";
 import MobileMenu from "./MobileMenu";
 

@@ -100,20 +100,6 @@ const Hero = () => {
                 </span>
               </Button>
             </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Button
-                size="lg"
-                variant="ghost"
-                className="bg-white/10 text-white hover:bg-white/20 transition-all duration-300 text-sm sm:text-base md:text-lg px-6 sm:px-7 md:px-8 py-5 sm:py-6 min-h-[44px]"
-              >
-                <a href="#guidelines" onClick={(e) => scrollToSection(e, '#guidelines')} className="flex items-center gap-2">
-                  Guidelines
-                </a>
-              </Button>
-            </motion.div>
           </motion.div>
           {/* Mobile: keep CTA buttons only (Guidelines section rendered on page) */}
         </div>

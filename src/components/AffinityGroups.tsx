@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
-import wieLogo from "@/assets/affinity/IEEE WIE SOCIETY LOGO.png";
+import wieLogo from "@/assets/team/IEEE Wie-CITNC Logo.png";
 import nanoLogo from "@/assets/affinity/IEEE Nanotechnology Logo.png";
 import sensorsLogo from "@/assets/affinity/IEEE Sensors council Logo.png";
 import systemsLogo from "@/assets/affinity/IEEE Systems council Logo.png";
 import transportLogo from "@/assets/affinity/IEEE Transportation and Electrification Council Logo.png";
+import aessLogo from "@/assets/affinity/AESS-CITNC.png";
 
 const groups = [
   {
@@ -40,6 +41,13 @@ const groups = [
     color: "from-emerald-600 to-lime-400",
     description: "Mobility, EVs and sustainable transport electrification.",
     logo: transportLogo,
+  },
+  {
+    id: 6,
+    title: "IEEE - Aerospace and Electronic Systems",
+    color: "from-blue-900 to-blue-600",
+    description: "Advancing aerospace technology, radar systems, and electronic defense solutions.",
+    logo: aessLogo,
   },
 ];
 
@@ -115,7 +123,7 @@ const AffinityGroups = () => {
 
                   <div className="relative z-10 h-full flex flex-col justify-between">
                     {/* Header with logo */}
-                    <div className="flex items-start gap-4 sm:gap-6 mb-4">
+                    <div className="flex items-start gap-4 sm:gap-6 mb-6">
                       <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white backdrop-blur-md flex items-center justify-center flex-shrink-0 shadow-lg p-2">
                         {g.logo ? (
                           <img src={g.logo} alt={`${g.title} logo`} className="w-full h-full object-contain" />
@@ -124,8 +132,8 @@ const AffinityGroups = () => {
                         )}
                       </div>
 
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2 leading-tight">{g.title}</h3>
+                      <div className="flex-1 min-w-0 flex flex-col justify-center">
+                        <h3 className="text-xl sm:text-2xl font-bold mb-2 leading-tight break-words">{g.title}</h3>
                         <div className="h-0.5 w-16 bg-white/40 rounded-full" />
                       </div>
                     </div>

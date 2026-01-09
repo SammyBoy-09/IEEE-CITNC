@@ -5,7 +5,7 @@ import Shriya from "../../assets/team/Shriya-WIE (1).png";
 import Ashwathi from "../../assets/team/Ashwathi-WIE.png";
 import Poorvi from "../../assets/team/poorvi-WIE (1).png";
 import Indrajeeth from "../../assets/team/Indrajeeth-WIE.png";
-import DarshanImg from "../../assets/team/Darshan Chikle-WIE.jpg";
+import DarshanImg from "../../assets/team/darshan-WIE.png";
 
 const wieTeam = [
   {
@@ -21,7 +21,7 @@ const wieTeam = [
     email: "meenakshi042004@gmail.com",
   },
   {
-    name: "Shriya BU.",
+    name: "Shriya.B.U.",
     designation: "VICE CHAIR",
     image: Shriya,
     email: "shriyabu@gmail.com",
@@ -33,7 +33,7 @@ const wieTeam = [
     email: "ashwathibnair2007@gmail.com",
   },
   {
-    name: "Poorvi Hatimatur",
+    name: "Poorvi Hattimattur",
     designation: "TREASURER",
     image: Poorvi,
     email: "hattimatturpoorvi@gmail.com",
