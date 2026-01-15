@@ -253,6 +253,7 @@ const WIELanding = () => {
         </div>
       </footer>
     </div>
+    </>
   );
 };
 
