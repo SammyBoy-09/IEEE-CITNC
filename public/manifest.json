@@ -1,0 +1,21 @@
+{
+  "name": "IEEE Student Branch CITNC",
+  "short_name": "IEEE CITNC",
+  "description": "IEEE Student Branch at Cambridge Institute of Technology North Campus",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#00629B",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/IEEE CITNC-2025.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "technology"],
+  "lang": "en-US",
+  "dir": "ltr"
+}

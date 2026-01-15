@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -25,13 +26,24 @@ const GuidelinesPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header with back button */}
-      <div className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
-        <div className="container mx-auto px-4 sm:px-6 py-4">
-          <button
-            onClick={() => navigate("/")}
-            className="inline-flex items-center gap-2 text-foreground hover:text-primary transition-colors duration-300"
+    <>
+      <Helmet>
+        <title>IEEE Membership Guidelines | IEEE Student Branch CITNC</title>
+        <meta name="description" content="Step-by-step guide to join IEEE as a student member at Cambridge Institute of Technology North Campus. Learn the complete registration process, payment details, and membership benefits." />
+        <meta name="keywords" content="IEEE membership, student membership, IEEE registration, IEEE CITNC, how to join IEEE, IEEE guidelines, student benefits" />
+        <link rel="canonical" href="https://ieee.citnc.co.in/guidelines" />
+        <meta property="og:title" content="IEEE Membership Guidelines | IEEE CITNC" />
+        <meta property="og:description" content="Complete guide to joining IEEE as a student member at CITNC" />
+        <meta property="og:url" content="https://ieee.citnc.co.in/guidelines" />
+      </Helmet>
+      
+      <div className="min-h-screen bg-background">
+        {/* Header with back button */}
+        <div className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+          <div className="container mx-auto px-4 sm:px-6 py-4">
+            <button
+              onClick={() => navigate("/")}
+              className="inline-flex items-center gap-2 text-foreground hover:text-primary transition-colors duration-300"
           >
             <ArrowLeft className="h-5 w-5" />
             <span className="font-medium">Back to Home</span>
@@ -113,6 +125,7 @@ const GuidelinesPage = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

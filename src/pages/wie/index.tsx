@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, Sparkles } from "lucide-react";
@@ -28,6 +29,16 @@ const WIELanding = () => {
   ];
 
   return (
+    <>
+      <Helmet>
+        <title>Women in Engineering (WIE) | IEEE Student Branch CITNC</title>
+        <meta name="description" content="IEEE Women in Engineering (WIE) at CITNC - Empowering women in engineering and technology. Join our community, attend workshops, and build your technical career." />
+        <meta name="keywords" content="Women in Engineering, WIE, IEEE WIE, women in tech, CITNC, Cambridge Institute of Technology, female engineers, tech diversity, women empowerment, STEM women" />
+        <link rel="canonical" href="https://ieee.citnc.co.in/wie" />
+        <meta property="og:title" content="Women in Engineering (WIE) | IEEE CITNC" />
+        <meta property="og:description" content="Empowering women in engineering and technology through IEEE WIE at Cambridge Institute of Technology North Campus" />
+        <meta property="og:url" content="https://ieee.citnc.co.in/wie" />
+      </Helmet>
     <div className="min-h-screen bg-background">
       
       {/* Header Section */}

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import TeamCard from "./TeamCard";
 import TeamCarousel from "./TeamCarousel";
 import rajaRam from "@/assets/team/raja-ram.jpeg";
@@ -118,6 +119,49 @@ const TeamSection = () => {
   }
 ];
 
+  // Generate structured data for SEO
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "IEEE Student Branch CITNC",
+    "url": window.location.origin,
+    "member": teamMembers.map(member => ({
+      "@type": "Person",
+      "name": member.name,
+      "jobTitle": member.designation,
+      "email": member.email,
+      "image": `${window.location.origin}${member.image}`,
+      ...(member.linkedin && { "sameAs": member.linkedin }),
+      ...(member.phone && { "telephone": member.phone }),
+      "worksFor": {
+        "@type": "Organization",
+        "name": "IEEE Student Branch CITNC"
+      }
+    }))
+  };
+
+  useEffect(() => {
+    // Add structured data to head
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(structuredData);
+    script.id = 'team-structured-data';
+    
+    // Remove existing script if present
+    const existing = document.getElementById('team-structured-data');
+    if (existing) {
+      existing.remove();
+    }
+    
+    document.head.appendChild(script);
+    
+    return () => {
+      const scriptToRemove = document.getElementById('team-structured-data');
+      if (scriptToRemove) {
+        scriptToRemove.remove();
+      }
+    };
+  }, []);
 
   return (
     <section id="team" className="py-16 sm:py-20 md:py-24 bg-muted/30">
