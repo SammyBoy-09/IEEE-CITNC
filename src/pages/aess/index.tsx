@@ -2,6 +2,7 @@ import React, { useMemo, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
+import AESSTeamCard from './AESSTeamCard';
 
 // Team member images
 import rajaRamImg from '@/assets/team/aess/raja-ram.jpeg';
@@ -134,7 +135,6 @@ const Navbar = () => {
     { name: 'Events', href: '#events' },
     { name: 'Benefits', href: '#benefits' },
     { name: 'Resources', href: '#resources' },
-    { name: 'Projects', href: '#projects' },
     { name: 'Team', href: '#team' },
   ];
 
@@ -395,38 +395,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ icon, title, description, sta
   </motion.div>
 );
 
-// Team Card Component
-interface TeamCardProps {
-  name: string;
-  position: string;
-  role: string;
-  image: string;
-  index?: number;
-}
-
-const TeamCard: React.FC<TeamCardProps> = ({ name, position, role, image, index = 0 }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-50px" }}
-    transition={{ duration: 0.5, delay: index * 0.1 }}
-    className="bg-slate-900/80 backdrop-blur-sm p-6 rounded-2xl border border-slate-800 hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] hover:-translate-y-1 transition-all duration-300 text-center"
-  >
-    <div
-      className="w-28 h-28 rounded-full mx-auto mb-4 overflow-hidden shadow-[0_0_20px_rgba(59,130,246,0.5)] border-2 border-blue-500/30 hover:scale-105 transition-transform duration-300"
-    >
-      <img 
-        src={image} 
-        alt={`${name} - ${position}`} 
-        className="w-full h-full object-cover" 
-        loading="lazy"
-      />
-    </div>
-    <h3 className="text-lg font-bold mb-1 text-blue-400">{name}</h3>
-    <p className="text-sm font-semibold text-slate-300 mb-1">{position}</p>
-    <p className="text-xs text-slate-400">{role}</p>
-  </motion.div>
-);
+// Team Card Component - Now using AESSTeamCard component imported from separate file
 
 // Main AESS Landing Component
 const AESSLanding = () => {
@@ -472,19 +441,6 @@ const AESSLanding = () => {
               className="bg-blue-600 hover:bg-blue-500 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold sm:font-bold text-sm sm:text-base md:text-lg shadow-[0_0_20px_rgba(59,130,246,0.5)] transition-all inline-block text-center w-full sm:w-auto focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
             >
               Join AESS
-            </motion.a>
-            <motion.a
-              href="#projects"
-              onClick={(e) => {
-                e.preventDefault();
-                const element = document.querySelector('#projects');
-                if (element) element.scrollIntoView({ behavior: 'smooth' });
-              }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-transparent border-2 border-blue-500 hover:bg-blue-500/10 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold sm:font-bold text-sm sm:text-base md:text-lg transition-all inline-block text-center w-full sm:w-auto focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-            >
-              Explore Projects
             </motion.a>
           </div>
         </motion.div>
@@ -763,65 +719,7 @@ const AESSLanding = () => {
         </div>
       </section>
 
-      {/* 8. PROJECTS SECTION */}
-      <section id="projects" className="relative z-10 py-16 sm:py-20 md:py-24 px-4 sm:px-6">
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            className="text-4xl md:text-5xl font-black text-center mb-16 text-blue-400"
-          >
-            Our Projects
-          </motion.h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <ProjectCard
-              index={0}
-              icon="🛰️"
-              title="Satellite Ground Station"
-              description="Our active ground station for tracking LEO satellites using Software Defined Radio (SDR) technology."
-              status="Active"
-            />
-            <ProjectCard
-              index={1}
-              icon="🥫"
-              title="CanSat Development"
-              description="Designing and building CanSat probes that fit inside a standard soda can for atmospheric research."
-              status="In Progress"
-            />
-            <ProjectCard
-              index={2}
-              icon="📡"
-              title="Radar Signal Processing"
-              description="Research projects on advanced radar signal processing and synthetic aperture radar (SAR) applications."
-              status="Research"
-            />
-            <ProjectCard
-              index={3}
-              icon="✈️"
-              title="UAV Systems"
-              description="Developing autonomous guidance systems for unmanned aerial vehicles and drone applications."
-              status="Development"
-            />
-            <ProjectCard
-              index={4}
-              icon="🧭"
-              title="Navigation Systems"
-              description="GPS and inertial navigation system integration projects for precision positioning."
-              status="Research"
-            />
-            <ProjectCard
-              index={5}
-              icon="🛸"
-              title="Space Communication"
-              description="Exploring deep-space communication protocols and ground station operations."
-              status="Planning"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* 9. TEAM SECTION */}
+      {/* 8. TEAM SECTION */}
       <section id="team" className="relative z-10 py-16 sm:py-20 md:py-24 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           <motion.h2
@@ -833,47 +731,55 @@ const AESSLanding = () => {
             Meet the Core Team
           </motion.h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <TeamCard
+            <AESSTeamCard
               index={0}
               name="Dr. R Raja Ramakrishna"
               position="Branch Counselor"
               role="Faculty Advisor"
               image={rajaRamImg}
+              email="r.rajaramakrishna@gmail.com"
             />
-            <TeamCard
+            <AESSTeamCard
               index={1}
               name="B.U. Shriya"
               position="Chairman"
               role="Leadership"
               image={shriyaImg}
+              email="shriyabu@gmail.com"
             />
-            <TeamCard
+            <AESSTeamCard
               index={2}
               name="Mohit Gowda T D"
               position="Vice Chairman"
               role="Operations"
               image={mohitImg}
+              email="mohitgowdatd.king@gmail.com"
+              linkedin="https://www.linkedin.com/in/mohitgowda-t-d-128664388/"
             />
-            <TeamCard
+            <AESSTeamCard
               index={3}
               name="Tanuja H Teradahalli"
               position="Treasurer"
               role="Finance"
               image={tanujaImg}
+              email="tanujaht99@gmail.com"
             />
-            <TeamCard
+            <AESSTeamCard
               index={4}
               name="N Sai Rakshitha"
               position="Secretary"
               role="Documentation"
               image={rakshithaImg}
+              email="rakshithasai260@gmail.com"
             />
-            <TeamCard
+            <AESSTeamCard
               index={5}
               name="Monish R"
               position="Webmaster"
               role="Technical"
               image={monishImg}
+              email="ramumonish136@gmail.com"
+              linkedin="https://www.linkedin.com/in/monish0107/"
             />
           </div>
         </div>
