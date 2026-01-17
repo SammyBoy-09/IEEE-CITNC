@@ -39,7 +39,7 @@ const AESSTeamCard = ({ name, position, role, image, index = 0, email, linkedin 
         </motion.div>
       </DialogTrigger>
       
-      <DialogContent className="w-11/12 max-w-sm sm:max-w-md bg-slate-900 border-blue-500/30">
+      <DialogContent className="w-11/12 max-w-sm sm:max-w-md bg-slate-900 border-blue-500/30 [&>button]:text-slate-300 [&>button]:hover:text-blue-400 [&>button]:hover:bg-blue-500/10 [&>button]:flex [&>button]:items-center [&>button]:justify-center">
         <div className="flex flex-col items-center space-y-4 p-4">
           <div className="w-32 h-32 rounded-full overflow-hidden ring-4 ring-blue-500/50 shadow-[0_0_30px_rgba(59,130,246,0.5)]">
             <img
