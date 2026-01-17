@@ -4,21 +4,21 @@ import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { useState } from "react";
 import InaugurationTimeline from "./InaugurationTimeline";
-import kscst1 from "@/assets/events/Ribbon Cutting IPR.png";
-import kscst2 from "@/assets/events/LIGHTING LAMP.png";
-import kscst3 from "@/assets/events/Appreciation Certificate.png";
-import membership1 from "@/assets/events/Membership drive-1.png";
-import membership2 from "@/assets/events/Membership drive-2.png";
-import membership3 from "@/assets/events/Membership drive-3.png";
-import inaugural1 from "@/assets/events/Inauguration lamp-SB.png";
-import inaugural2 from "@/assets/events/Addressing the gathering .png";
-import inaugural3 from "@/assets/events/Falicitation .png";
-import techTalk1 from "@/assets/events/Tech Talk.jpg";
-import techTalk2 from "@/assets/events/Yogabalaji-1.png";
-import techTalk3 from "@/assets/events/Felicitation to yogabalaji.png";
-import startup1 from "@/assets/events/Startup idea-GOWRISH H B.jpg";
-import startup2 from "@/assets/events/Gowrish explaination.png";
-import startup3 from "@/assets/events/Hell Craft tech.png";
+import kscst1 from "@/assets/events/Ribbon Cutting IPR.webp";
+import kscst2 from "@/assets/events/LIGHTING LAMP.webp";
+import kscst3 from "@/assets/events/Appreciation Certificate.webp";
+import membership1 from "@/assets/events/Membership drive-1.webp";
+import membership2 from "@/assets/events/Membership drive-2.webp";
+import membership3 from "@/assets/events/Membership drive-3.webp";
+import inaugural1 from "@/assets/events/Inauguration lamp-SB.webp";
+import inaugural2 from "@/assets/events/Addressing the gathering .webp";
+import inaugural3 from "@/assets/events/Falicitation .webp";
+import techTalk1 from "@/assets/events/Tech Talk.webp";
+import techTalk2 from "@/assets/events/Yogabalaji-1.webp";
+import techTalk3 from "@/assets/events/Felicitation to yogabalaji.webp";
+import startup1 from "@/assets/events/Startup idea-GOWRISH H B.webp";
+import startup2 from "@/assets/events/Gowrish explaination.webp";
+import startup3 from "@/assets/events/Hell Craft tech.webp";
 
 const EventSchedule = () => {
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation({ threshold: 0.2 });
@@ -414,6 +414,7 @@ Mr. Gowrish H B is the Founder of HellCraftTech™, a testament to the power of 
                           key={i}
                           src={img}
                           alt={`${event.title} image ${i + 1}`}
+                          loading="lazy"
                           variants={itemVariants}
                           whileHover={{ scale: 1.06 }}
                           transition={{ type: 'spring', stiffness: 300 }}

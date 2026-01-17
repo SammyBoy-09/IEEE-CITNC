@@ -5,7 +5,7 @@ import { useState } from "react";
 import WIEEventModal from "./WIEEventModal";
 import poster1 from "@/assets/events/Poster Presentation-1.jpeg";
 import poster2 from "@/assets/events/Poster Presentation-2.jpeg";
-import poster3 from "@/assets/events/Poster Presentation-3.jpeg";
+import poster3 from "@/assets/events/Poster Presentation-3.webp";
 import chess1 from "@/assets/events/CHESS.jpeg";
 import chess2 from "@/assets/events/CHESS-1.jpeg";
 
