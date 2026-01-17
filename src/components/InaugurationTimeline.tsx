@@ -139,7 +139,7 @@ const InaugurationTimeline = ({ isOpen, onClose, images = [], title = "IEEE Stud
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="relative bg-gradient-to-r from-primary to-primary-glow p-4 sm:p-6 md:p-8 overflow-hidden flex-shrink-0">
+            <div className="relative bg-gradient-to-r from-primary to-primary-glow p-3 sm:p-4 md:p-5 overflow-hidden flex-shrink-0">
               {/* Animated background circles */}
               <motion.div 
                 className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl"

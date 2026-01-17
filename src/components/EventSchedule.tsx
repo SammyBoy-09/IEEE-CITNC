@@ -32,15 +32,15 @@ const EventSchedule = () => {
     showTimeline?: boolean;
   }>({ images: [], title: "", date: "", description: "" });
 
-  // Gallery animation variants (staggered entrance + hover scale)
+  // Gallery animation variants (simplified for performance)
   const galleryVariants = {
     hidden: {},
-    visible: { transition: { staggerChildren: 0.08 } },
+    visible: { transition: { staggerChildren: 0.05 } },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 10, scale: 0.98 },
-    visible: { opacity: 1, y: 0, scale: 1 },
+    hidden: { opacity: 0, y: 8 },
+    visible: { opacity: 1, y: 0 },
   };
 
   const events = [
@@ -106,11 +106,11 @@ const EventSchedule = () => {
         <motion.div 
           className="absolute top-5 sm:top-10 right-5 sm:right-10 w-48 h-48 sm:w-72 sm:h-72 bg-primary/5 rounded-full blur-3xl"
           animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
+            scale: [1, 1.15, 1],
+            opacity: [0.3, 0.4, 0.3],
           }}
           transition={{
-            duration: 8,
+            duration: 12,
             repeat: Infinity,
             ease: "easeInOut"
           }}
@@ -118,11 +118,11 @@ const EventSchedule = () => {
         <motion.div 
           className="absolute bottom-5 sm:bottom-10 left-5 sm:left-10 w-64 h-64 sm:w-96 sm:h-96 bg-primary/5 rounded-full blur-3xl"
           animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.2, 0.4, 0.2],
+            scale: [1, 1.2, 1],
+            opacity: [0.2, 0.3, 0.2],
           }}
           transition={{
-            duration: 10,
+            duration: 15,
             repeat: Infinity,
             ease: "easeInOut",
             delay: 2
@@ -176,16 +176,16 @@ const EventSchedule = () => {
           {events.map((event, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 50, scale: 0.95 }}
-              animate={eventsVisible ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.95 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={eventsVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ 
-                duration: 0.5, 
-                delay: index * 0.1,
+                duration: 0.4, 
+                delay: index * 0.08,
                 ease: "easeOut"
               }}
               whileHover={{ 
-                y: -8, 
-                transition: { duration: 0.3 } 
+                y: -4, 
+                transition: { duration: 0.2 } 
               }}
               onClick={() => {
                 if (!event.isClickable) return;
@@ -363,7 +363,7 @@ Mr. Gowrish H B is the Founder of HellCraftTech™, a testament to the power of 
               }}
               className={event.isClickable ? "cursor-pointer" : ""}
             >
-              <Card className={`p-6 sm:p-8 hover:shadow-[var(--shadow-hover)] transition-all duration-500 group border-2 border-primary/20 hover:border-primary/60 h-full relative overflow-hidden ${event.isClickable ? 'hover:scale-[1.02]' : ''}`}>
+              <Card className={`p-6 sm:p-8 hover:shadow-[var(--shadow-hover)] transition-all duration-300 group border-2 border-primary/20 hover:border-primary/60 h-full relative overflow-hidden`}>
                 {/* Gradient glow effect on hover */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary-glow/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
@@ -416,8 +416,8 @@ Mr. Gowrish H B is the Founder of HellCraftTech™, a testament to the power of 
                           alt={`${event.title} image ${i + 1}`}
                           loading="lazy"
                           variants={itemVariants}
-                          whileHover={{ scale: 1.06 }}
-                          transition={{ type: 'spring', stiffness: 300 }}
+                          whileHover={{ scale: 1.03 }}
+                          transition={{ duration: 0.2 }}
                           className={`${event.images.length === 1 ? 'w-full max-h-48 object-contain' : i === 0 ? 'w-full h-24 object-contain' : 'w-full h-24 object-cover'} rounded-md border border-primary/10`}
                         />
                       ))}
