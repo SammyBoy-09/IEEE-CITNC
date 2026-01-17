@@ -90,7 +90,7 @@ const Benefits = () => {
         />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
         <motion.div 
           ref={headerRef}
           className="text-center mb-12 sm:mb-14 md:mb-16"
@@ -100,36 +100,37 @@ const Benefits = () => {
         >
           <motion.div 
             className="inline-flex items-center gap-1.5 sm:gap-2 bg-primary/10 backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-5 sm:mb-6 border border-primary/20"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={headerVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.2 }}
           >
             <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 text-primary flex-shrink-0" />
             <span className="text-primary text-xs sm:text-sm font-medium leading-tight">Member Benefits</span>
           </motion.div>
-
+          
           <motion.h2 
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-3 sm:mb-4 px-2 leading-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-3 sm:mb-4 px-2 leading-tight"
+            initial={{ opacity: 0, y: 30 }}
+            animate={headerVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Benefits of Joining IEEE
+          </motion.h2>
+          
+          <motion.p 
+            className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-6 sm:mb-8 leading-relaxed px-2"
             initial={{ opacity: 0, y: 30 }}
             animate={headerVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            Benefits of Membership
-          </motion.h2>
+            Unlock opportunities for growth, learning, and global networking as an IEEE member.
+          </motion.p>
+          
           <motion.div 
-            className="w-20 sm:w-24 h-1 bg-gradient-to-r from-primary to-primary-glow mx-auto mb-5 sm:mb-6"
+            className="w-20 sm:w-24 h-1 bg-gradient-to-r from-primary to-primary-glow mx-auto mb-6 sm:mb-8"
             initial={{ width: 0 }}
-            animate={headerVisible ? { width: "5rem" } : { width: 0 }}
+            animate={headerVisible ? { width: "6rem" } : { width: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           />
-          <motion.p 
-            className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto px-2 leading-relaxed"
-            initial={{ opacity: 0, y: 30 }}
-            animate={headerVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
-            IEEE members stay current in the technology profession, connect with peers, and invest in career advancement
-          </motion.p>
         </motion.div>
 
         <div ref={benefitsRef} className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">

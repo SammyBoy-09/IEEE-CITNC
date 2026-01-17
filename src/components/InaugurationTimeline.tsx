@@ -1,4 +1,4 @@
-import { X, Clock, Users, Music, Lightbulb, Mic, Trophy, Coffee, ChevronRight } from "lucide-react";
+import { X, Clock, Users, Music, Lightbulb, Mic, Trophy, Coffee, ChevronRight, LucideIcon } from "lucide-react";
 import { motion, AnimatePresence, useAnimationControls } from "framer-motion";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
@@ -18,7 +18,7 @@ interface TimelineEvent {
   time: string;
   event: string;
   duration: string;
-  icon: any;
+  icon: LucideIcon;
   color: string;
   position: 'top' | 'bottom';
 }
@@ -191,18 +191,7 @@ const InaugurationTimeline = ({ isOpen, onClose, images = [], title = "IEEE Stud
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.35, type: "spring", damping: 25 }}
                 >
-                  <motion.span
-                    animate={{ 
-                      rotate: [0, 5, -5, 0],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  >
-                    📅
-                  </motion.span>
+                  <span>📅</span>
                   {date || 'Date not specified'}
                 </motion.p>
               </motion.div>
@@ -227,125 +216,94 @@ const InaugurationTimeline = ({ isOpen, onClose, images = [], title = "IEEE Stud
               onWheel={(e) => e.stopPropagation()}
               onTouchMove={(e) => e.stopPropagation()}
             >
-              {/* Hero Section */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, type: "spring", damping: 25 }}
-                className="text-center py-4 sm:py-6 md:py-8 px-4 bg-gradient-to-b from-primary/5 to-transparent"
-              >
-                <motion.h3 
-                  className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-2"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.6, type: "spring", damping: 20 }}
-                >
-                  {title}
-                </motion.h3>
-                <motion.p 
-                  className="text-muted-foreground text-xs sm:text-sm md:text-base"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.7, duration: 0.5 }}
-                >
-                  {date || 'A day filled with innovation, celebration, and inspiration'}
-                </motion.p>
-              </motion.div>
-
-              {/* Horizontal Timeline */}
-                <div 
-                ref={scrollRef}
-                onMouseEnter={() => setIsPaused(true)}
-                onMouseLeave={() => setIsPaused(false)}
-                onTouchStart={() => setIsPaused(true)}
-                onTouchEnd={() => setIsPaused(false)}
-                className="relative px-4 sm:px-6 md:px-8 py-6 sm:py-8 md:py-12 overflow-x-auto scrollbar-hide"
-                style={{ 
-                  scrollBehavior: 'auto',
-                  WebkitOverflowScrolling: 'touch'
-                }}
-              >
-                {/* If images provided, show carousel hero */}
+              {/* Content with 2:1 layout */}
+              <div className="px-4 sm:px-5 md:px-6 py-4 sm:py-5 md:py-6">
                 {images && images.length > 0 ? (
-                  <div className="max-w-4xl mx-auto mb-6 sm:mb-8">
-                    <div className="relative rounded-xl overflow-hidden bg-muted">
-                      <AnimatePresence initial={false} mode="wait">
-                        <motion.img
-                          key={images[currentIndex]}
-                          src={images[currentIndex]}
-                          alt={`Slide ${currentIndex + 1}`}
-                          className="w-full h-[60vh] sm:h-[70vh] object-contain bg-gray-900"
-                          initial={{ opacity: 0, x: 30, scale: 0.98 }}
-                          animate={{ opacity: 1, x: 0, scale: 1 }}
-                          exit={{ opacity: 0, x: -30, scale: 0.98 }}
-                          transition={{ duration: 0.6 }}
-                        />
-                      </AnimatePresence>
+                  <div className="max-w-7xl mx-auto">
+                    {/* Two-column layout on desktop, stacked on mobile */}
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
+                      {/* Image Carousel - Takes 2/3 of space on desktop */}
+                      <div className="lg:col-span-2">
+                        <div className="sticky top-0 rounded-xl overflow-hidden bg-gray-900">
+                          <AnimatePresence initial={false} mode="wait">
+                            <motion.img
+                              key={images[currentIndex]}
+                              src={images[currentIndex]}
+                              alt={`${title} - Image ${currentIndex + 1}`}
+                              className="w-full h-[40vh] sm:h-[50vh] lg:h-[60vh] object-contain bg-gray-900"
+                              initial={{ opacity: 0, x: 100 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              exit={{ opacity: 0, x: -100 }}
+                              transition={{ duration: 0.5, ease: "easeInOut" }}
+                            />
+                          </AnimatePresence>
 
-                      {/* Controls */}
-                      <div className="absolute inset-0 flex items-center justify-between px-3 sm:px-4">
-                        <button
-                          aria-label="Previous"
-                          className="bg-black/30 hover:bg-black/40 text-white rounded-full p-2"
-                          onClick={() => { setIsAutoPlay(false); setCurrentIndex((i) => (i - 1 + images.length) % images.length); }}
-                        >
-                          ‹
-                        </button>
-                        <button
-                          aria-label="Next"
-                          className="bg-black/30 hover:bg-black/40 text-white rounded-full p-2"
-                          onClick={() => { setIsAutoPlay(false); setCurrentIndex((i) => (i + 1) % images.length); }}
-                        >
-                          ›
-                        </button>
+                          {/* Navigation Controls */}
+                          {images.length > 1 && (
+                            <>
+                              <div className="absolute inset-0 flex items-center justify-between px-2 sm:px-3 pointer-events-none">
+                                <button
+                                  aria-label="Previous image"
+                                  className="pointer-events-auto bg-black/40 hover:bg-black/60 text-white rounded-full h-9 w-9 sm:h-11 sm:w-11 flex items-center justify-center transition-all duration-300 text-xl sm:text-2xl font-bold"
+                                  onClick={() => { setIsAutoPlay(false); setCurrentIndex((i) => (i - 1 + images.length) % images.length); }}
+                                >
+                                  ‹
+                                </button>
+                                <button
+                                  aria-label="Next image"
+                                  className="pointer-events-auto bg-black/40 hover:bg-black/60 text-white rounded-full h-9 w-9 sm:h-11 sm:w-11 flex items-center justify-center transition-all duration-300 text-xl sm:text-2xl font-bold"
+                                  onClick={() => { setIsAutoPlay(false); setCurrentIndex((i) => (i + 1) % images.length); }}
+                                >
+                                  ›
+                                </button>
+                              </div>
+                            </>
+                          )}
+
+                          {/* Image counter */}
+                          {images.length > 1 && (
+                            <div className="absolute top-2 sm:top-3 left-2 sm:left-3 bg-black/50 text-white text-xs px-2 py-1 rounded-full">
+                              {currentIndex + 1} / {images.length}
+                            </div>
+                          )}
+                        </div>
                       </div>
 
-                      {/* Indicators */}
-                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-                        {images.map((_, i) => (
-                          <button
-                            key={i}
-                            onClick={() => { setIsAutoPlay(false); setCurrentIndex(i); }}
-                            className={`w-2 h-2 rounded-full ${i === currentIndex ? 'bg-white' : 'bg-white/40'}`}
-                            aria-label={`Go to slide ${i + 1}`}
-                          />
-                        ))}
+                      {/* Description Column - Takes 1/3 of space on desktop */}
+                      <div className="flex flex-col lg:col-span-1">
+                        {description && (
+                          <motion.div 
+                            className="bg-gradient-to-br from-blue-50 to-primary/5 rounded-xl p-4 sm:p-5 md:p-6 shadow-lg border-2 border-primary/20 h-full overflow-y-auto"
+                            initial={{ opacity: 0, x: 20 }} 
+                            animate={{ opacity: 1, x: 0 }} 
+                            transition={{ delay: 0.2 }}
+                          >
+                            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-primary mb-3 sm:mb-4">About this Event</h3>
+                            <div className="text-gray-800 text-sm sm:text-base leading-relaxed whitespace-pre-line">
+                              {description}
+                            </div>
+                          </motion.div>
+                        )}
                       </div>
                     </div>
-
-                    {description && (
-                      <motion.div 
-                        className="mt-6 bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg border-2 border-primary/20"
-                        initial={{ opacity: 0 }} 
-                        animate={{ opacity: 1 }} 
-                        transition={{ delay: 0.2 }}
-                      >
-                        <div className="text-gray-900 dark:text-gray-100 whitespace-pre-line text-sm sm:text-base leading-relaxed">
-                          {description}
-                        </div>
-                      </motion.div>
-                    )}
                   </div>
                 ) : (
-                  // No images: show a professional card with title/date/description
-                  <div className="max-w-3xl mx-auto mb-6 sm:mb-8 px-4">
-                    <Card className="p-6 md:p-8 shadow-lg">
-                      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
-                        <div className="flex items-start justify-between gap-4">
-                          <div>
-                            <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-foreground">{title}</h4>
-                            {date && <p className="text-sm text-muted-foreground mt-1">{date}</p>}
-                          </div>
+                  // No images: show text content only
+                  <div className="max-w-3xl mx-auto">
+                    <motion.div 
+                      className="bg-gradient-to-br from-blue-50 to-primary/5 rounded-xl p-6 sm:p-8 shadow-lg border-2 border-primary/20"
+                      initial={{ opacity: 0, y: 20 }} 
+                      animate={{ opacity: 1, y: 0 }} 
+                      transition={{ delay: 0.2 }}
+                    >
+                      {description && (
+                        <div className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed whitespace-pre-line">
+                          {description}
                         </div>
-
-                        {description && (
-                          <p className="mt-4 text-sm sm:text-base text-muted-foreground leading-relaxed">{description}</p>
-                        )}
-                      </motion.div>
-                    </Card>
+                      )}
+                    </motion.div>
                   </div>
                 )}
-                {/* Removed hardcoded inauguration paragraph to avoid duplicate long text. */}
               </div>
             </div>
           </motion.div>

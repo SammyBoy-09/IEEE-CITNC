@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
-import wieLogo from "@/assets/team/IEEE Wie-CITNC Logo.png";
+import { Sparkles } from "lucide-react";
+import wieLogo from "@/assets/affinity/wie_logo.png";
 import nanoLogo from "@/assets/affinity/IEEE Nanotechnology Logo.png";
 import sensorsLogo from "@/assets/affinity/IEEE Sensors council Logo.png";
 import systemsLogo from "@/assets/affinity/IEEE Systems council Logo.png";
 import transportLogo from "@/assets/affinity/IEEE Transportation and Electrification Council Logo.png";
-import aessLogo from "@/assets/affinity/AESS-CITNC.png";
+import aessLogo from "@/assets/affinity/aess_logo.png";
 
 const groups = [
   {
@@ -13,6 +14,13 @@ const groups = [
     color: "from-purple-600 to-purple-400",
     description: "Championing women engineers through mentorship, events and leadership.",
     logo: wieLogo,
+  },
+  {
+    id: 6,
+    title: "IEEE - Aerospace and Electronic Systems",
+    color: "from-blue-900 to-blue-600",
+    description: "Advancing aerospace technology, radar systems, and electronic defense solutions.",
+    logo: aessLogo,
   },
   {
     id: 2,
@@ -42,18 +50,11 @@ const groups = [
     description: "Mobility, EVs and sustainable transport electrification.",
     logo: transportLogo,
   },
-  {
-    id: 6,
-    title: "IEEE - Aerospace and Electronic Systems",
-    color: "from-blue-900 to-blue-600",
-    description: "Advancing aerospace technology, radar systems, and electronic defense solutions.",
-    logo: aessLogo,
-  },
 ];
 
 const AffinityGroups = () => {
   return (
-    <section id="affinity" className="min-h-screen py-16 sm:py-24 bg-gradient-to-b from-background via-primary/5 to-background relative overflow-hidden">
+    <section id="affinity" className="min-h-screen py-16 sm:py-20 md:py-24 bg-gradient-to-b from-background via-primary/5 to-background relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -83,7 +84,53 @@ const AffinityGroups = () => {
         />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
+        {/* Header Section */}
+        <motion.div 
+          className="text-center mb-12 sm:mb-14 md:mb-16"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
+          <motion.div 
+            className="inline-flex items-center gap-1.5 sm:gap-2 bg-primary/10 backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-5 sm:mb-6 border border-primary/20"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 text-primary flex-shrink-0" />
+            <span className="text-primary text-xs sm:text-sm font-medium leading-tight">Our Societies</span>
+          </motion.div>
+          
+          <motion.h2 
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-3 sm:mb-4 px-2 leading-tight"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Affinity Groups & Societies
+          </motion.h2>
+          
+          <motion.p 
+            className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-6 sm:mb-8 leading-relaxed px-2"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            Explore diverse technical societies fostering collaboration, innovation, and specialized learning across engineering domains.
+          </motion.p>
+          
+          <motion.div 
+            className="w-20 sm:w-24 h-1 bg-gradient-to-r from-primary to-primary-glow mx-auto mb-6 sm:mb-8"
+            initial={{ width: 0 }}
+            whileInView={{ width: "6rem" }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          />
+        </motion.div>
+
         {/* Modern asymmetric grid layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 items-stretch">
           {groups.map((g, idx) => {
@@ -153,6 +200,25 @@ const AffinityGroups = () => {
                           className="inline-flex items-center gap-2 px-6 py-3 bg-white text-purple-600 rounded-full text-sm sm:text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group"
                         >
                           <span>Explore WIE</span>
+                          <motion.svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            animate={{ x: [0, 5, 0] }}
+                            transition={{ duration: 1.5, repeat: Infinity }}
+                          >
+                            <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                          </motion.svg>
+                        </motion.a>
+                      ) : g.id === 6 ? (
+                        <motion.a
+                          href="/aess"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="inline-flex items-center gap-2 px-6 py-3 bg-white text-blue-800 rounded-full text-sm sm:text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group"
+                        >
+                          <span>Explore AESS</span>
                           <motion.svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-5 w-5"

@@ -47,6 +47,13 @@ const TeamSection = () => {
     ,
     email: "shreyatavarkhed@gmail.com"
   },
+    {
+    name: "Sanjana S B",
+    designation: "Secretary",
+    image: sanjana
+    ,
+    email: "sbsanjana10@gmail.com"
+  },
   {
     name: "Samuel Lazar",
     designation: "Webmaster",
@@ -55,13 +62,7 @@ const TeamSection = () => {
     email: "samuel272lazar@gmail.com",
     linkedin: "https://www.linkedin.com/in/samuel-lazar/"
   },
-  {
-    name: "Sanjana S B",
-    designation: "Secretary",
-    image: sanjana
-    ,
-    email: "sbsanjana10@gmail.com"
-  },
+
   {
     name: "Meenakshi S",
     designation: "Women in Engineering Chair",
@@ -77,16 +78,14 @@ const TeamSection = () => {
     ,
     email: "pranitha24.k@gmail.com"
   },
-  {
-    name: "Amith H P",
-    designation: "PR Head",
-    image: amith
+    {
+    name: "Sindhu S",
+    designation: "Joint Secretary",
+    image: sindhu
     ,
-    email: "amithhp06@gmail.com",
-    linkedin: "https://www.linkedin.com/in/amith-h-p-742477334/",
-    phone: "+91 8660975303"
+    email: "sindhusgowda369@gmail.com"
   },
-  {
+    {
     name: "Varun Kumar B H",
     designation: "Jr Webmaster",
     image: varun
@@ -96,19 +95,23 @@ const TeamSection = () => {
     phone: "+91 7019221487"
   },
   {
+    name: "Amith H P",
+    designation: "PR Head",
+    image: amith
+    ,
+    email: "amithhp06@gmail.com",
+    linkedin: "https://www.linkedin.com/in/amith-h-p-742477334/",
+    phone: "+91 8660975303"
+  },
+
+  {
     name: "Hansika Muralidhar",
     designation: "Jr Creative Head",
     image: hansika
     ,
     email: "Hansika.Muralidhar@gmail.com"
   },
-  {
-    name: "Sindhu S",
-    designation: "Joint Secretary",
-    image: sindhu
-    ,
-    email: "sindhusgowda369@gmail.com"
-  },
+
   {
     name: "Srushti T",
     designation: "Membership Development Chair",
@@ -121,7 +124,7 @@ const TeamSection = () => {
 
   return (
     <section id="team" className="py-16 sm:py-20 md:py-24 bg-muted/30">
-      <div className="container mx-auto px-4 sm:px-6">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
         {/* Mobile Carousel */}
         <TeamCarousel members={teamMembers} />
 
@@ -137,7 +140,7 @@ const TeamSection = () => {
             </p>
           </div>
         
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 sm:gap-10 md:gap-12 justify-items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 sm:gap-10 md:gap-12 justify-items-center [&>*:last-child:nth-child(4n+1)]:xl:col-start-2 [&>*:last-child:nth-child(4n+1)]:xl:col-span-2">
             {teamMembers.map((member, index) => (
               <TeamCard
                 key={index}

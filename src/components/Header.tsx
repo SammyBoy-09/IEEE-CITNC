@@ -3,8 +3,7 @@ import { Button } from "./ui/button";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import ieeeLogo from "@/assets/ieee-logo-new.png";
-import citncLogo from "@/assets/citnc-logo.png";
+import ieeeLogo from "@/assets/ieee_logo.png";
 import MobileMenu from "./MobileMenu";
 
 const Header = () => {
@@ -38,7 +37,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["#home", "#about", "#guidelines", "#events", "#team", "#benefits"];
+      const sections = ["#home", "#about", "#affinity", "#events", "#team", "#benefits"];
       
       for (const section of sections) {
         const element = document.querySelector(section);
@@ -106,12 +105,12 @@ const Header = () => {
             <motion.img 
               src={ieeeLogo} 
               alt="IEEE Logo" 
-              className="h-8 sm:h-10 md:h-12 w-auto flex-shrink-0"
-              whileHover={{ scale: 1.03, }}
+              className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto flex-shrink-0"
+              whileHover={{ scale: 1.03 }}
               transition={{ duration: 0.3 }}
             />
-            <div className="hidden sm:block">
-              <h1 className="text-sm sm:text-base md:text-lg font-bold text-foreground leading-tight">Student Branch</h1>
+            <div className="hidden sm:block ml-2">
+              <h1 className="text-sm sm:text-base md:text-lg font-bold text-foreground leading-tight">IEEE Student Branch</h1>
               <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground leading-tight" style={{ marginTop: -2 }}>Cambridge Institute of Technology North Campus</p>
             </div>
           </motion.div>

@@ -622,3 +622,35 @@ All colors MUST be HSL.
   }
 }
 
+/* CSS-based blob animations for better performance (replaces Framer Motion) */
+@keyframes blob {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1;
+  }
+  33% {
+    transform: translate3d(20px, -20px, 0) scale(1.1);
+    opacity: 0.8;
+  }
+  66% {
+    transform: translate3d(-10px, 10px, 0) scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+.animate-blob {
+  animation: blob 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+

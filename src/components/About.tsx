@@ -8,7 +8,7 @@ const About = () => {
 
   return (
     <section id="about" className="py-16 sm:py-20 md:py-24 bg-gradient-to-br from-background via-primary/5 to-background">
-      <div className="container mx-auto px-4 sm:px-6">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
         {/* Header */}
         <motion.div 
           ref={headerRef}
@@ -28,12 +28,12 @@ const About = () => {
           </motion.div>
           
           <motion.h2 
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-3 sm:mb-4 px-2 leading-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-3 sm:mb-4 px-2 leading-tight"
             initial={{ opacity: 0, y: 30 }}
             animate={headerVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            WHO WE ARE
+            Who We Are
           </motion.h2>
           <motion.p 
             className="text-lg sm:text-xl md:text-2xl font-semibold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent mb-6 sm:mb-8 px-2 leading-relaxed"
@@ -50,14 +50,16 @@ const About = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
           />
           
-          <motion.p 
-            className="text-base sm:text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed px-2"
+          <motion.div 
+            className="text-base sm:text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed px-2 space-y-4"
             initial={{ opacity: 0, y: 30 }}
             animate={headerVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            The IEEE Student Branch at Cambridge Institute of Technology, North Campus is a dynamic and inclusive community of engineering students driven by a passion for technology, innovation, and leadership. We aim to bridge the gap between academics and industry by providing a platform for students to collaborate on cutting-edge projects, participate in global IEEE initiatives, and develop essential professional skills. Our branch nurtures curiosity, creativity, and competence — empowering future engineers to make a lasting impact on society.
-          </motion.p>
+            <p>The IEEE Student Branch at Cambridge Institute of Technology, North Campus is a dynamic and inclusive community of engineering students driven by a passion for technology, innovation, and leadership.</p>
+            <p>We aim to bridge the gap between academics and industry by providing a platform for students to collaborate on cutting-edge projects, participate in global IEEE initiatives, and develop essential professional skills.</p>
+            <p>Our branch nurtures curiosity, creativity, and competence — empowering future engineers to make a lasting impact on society.</p>
+          </motion.div>
         </motion.div>
         
         {/* Four Pillars */}

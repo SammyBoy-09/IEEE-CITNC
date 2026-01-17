@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import Index from "./pages/Index";
 import WIELanding from "./pages/wie/index";
+import AESSLanding from "./pages/aess/index";
 import GuidelinesPage from "./pages/GuidelinesPage";
 import NotFound from "./pages/NotFound";
 
@@ -22,6 +23,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/wie" element={<WIELanding />} />
+              <Route path="/aess" element={<AESSLanding />} />
               <Route path="/guidelines" element={<GuidelinesPage />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />

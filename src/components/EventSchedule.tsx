@@ -68,14 +68,14 @@ const EventSchedule = () => {
     {
       title: "Decoding Data Science",
       description: "An enlightening technical session featuring Yogabalaji, who delved into the fascinating world of data science and artificial intelligence. The event covered cutting-edge trends, practical applications, and hands-on approaches to solving real-world problems using data-driven methodologies. Participants explored machine learning algorithms, data analytics techniques, and AI frameworks, gaining valuable insights into the rapidly evolving field of data science and its impact on modern technology.",
-      status: "Upcoming - 15th December 2025, 10am",
+      status: "15th December 2025, 10am",
       images: [techTalk1, techTalk2, techTalk3],
       isClickable: true
     },
     {
       title: "From Idea to Startup",
       description: "An inspiring session where Gowrish H B shares his entrepreneurial journey and insights on transforming innovative ideas into successful startups. The event featured Hell Craft Tech, showcasing real-world applications of technology in building and scaling a startup from concept to execution. Participants gained valuable knowledge on ideation, market validation, product development, and the challenges faced by early-stage entrepreneurs.",
-      status: "Upcoming - 15th December 2025, 2pm",
+      status: "15th December 2025, 2pm",
       images: [startup1, startup2, startup3],
       isClickable: true
     },
@@ -130,7 +130,7 @@ const EventSchedule = () => {
         />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
         <motion.div 
           ref={headerRef}
           className="text-center mb-12 sm:mb-14 md:mb-16"
@@ -168,7 +168,7 @@ const EventSchedule = () => {
             animate={headerVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            Upcoming events and activities organized by IEEE Student Branch
+            Events and activities organized by IEEE CITNC Student Branch
           </motion.p>
         </motion.div>
         
@@ -369,17 +369,20 @@ Mr. Gowrish H B is the Founder of HellCraftTech™, a testament to the power of 
                 
                 <div className="relative z-10">
                   <motion.div 
-                    className="inline-flex items-center gap-1.5 sm:gap-2 bg-primary/10 backdrop-blur-sm px-2.5 py-1 sm:px-3 sm:py-1 rounded-full mb-3 sm:mb-4 border border-primary/20"
+                    className={`inline-flex items-center gap-1.5 sm:gap-2 backdrop-blur-sm px-2.5 py-1 sm:px-3 sm:py-1 rounded-full mb-3 sm:mb-4 border ${
+                      event.status !== 'Upcoming'
+                        ? 'bg-green-100 text-green-700 border-green-200' 
+                        : 'bg-primary/10 text-primary border-primary/20'
+                    }`}
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <motion.div
-                      animate={{ rotate: [0, 360] }}
-                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                    >
-                      <Calendar className="h-3 w-3 sm:h-4 sm:w-4 text-primary flex-shrink-0" />
-                    </motion.div>
-                    <span className="text-primary text-[10px] sm:text-xs font-medium leading-tight">{event.status}</span>
+
+                      <Calendar className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
+
+                    <span className="text-[10px] sm:text-xs font-medium leading-tight">
+                      {event.status !== 'Upcoming' ? '✓ ' : ''}{event.status}
+                    </span>
                   </motion.div>
                   
                   <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-2.5 sm:mb-3 group-hover:text-primary transition-colors duration-300 leading-tight">

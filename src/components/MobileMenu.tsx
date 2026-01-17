@@ -84,11 +84,12 @@ const MobileMenu = ({ isOpen, onClose, activeSection, onNavigate }: MobileMenuPr
   }, [isOpen]);
 
   const handleNavigate = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    onNavigate(e, href);
-    // Small delay before closing to ensure navigation completes
+    // Close the menu first to re-enable body scroll
+    onClose();
+    // Then navigate after menu close animation starts
     setTimeout(() => {
-      onClose();
-    }, 100);
+      onNavigate(e, href);
+    }, 150);
   };
 
   return (

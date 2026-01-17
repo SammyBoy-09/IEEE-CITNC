@@ -27,7 +27,7 @@ const Contact = () => {
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          access_key: 'YOUR_WEB3FORMS_ACCESS_KEY', // Get free key from web3forms.com
+          access_key: 'YOUR_WEB3FORMS_ACCESS_KEY', // TODO: Get free key from https://web3forms.com/
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
@@ -59,8 +59,8 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-background">
-      <div className="container mx-auto px-4">
+    <section id="contact" className="py-16 sm:py-20 md:py-24 bg-background">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
         <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             Get In Touch

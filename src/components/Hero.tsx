@@ -18,7 +18,7 @@ const Hero = () => {
   return (
     <section 
       id="home" 
-      className="relative min-h-[100svh] flex items-center justify-center bg-gradient-to-br from-primary via-primary-glow to-blue-600 overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary via-primary-glow to-blue-600 overflow-hidden"
     >
       {/* Animated background circles */}
       <div className="absolute inset-0 overflow-hidden">
@@ -49,7 +49,7 @@ const Hero = () => {
         />
       </div>
       
-      <div className="container mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-32 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-16 sm:py-20 md:py-24 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div 
             className="inline-flex items-center gap-1.5 sm:gap-2 bg-white/10 backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-6 sm:mb-8 border border-white/20"
@@ -62,7 +62,7 @@ const Hero = () => {
           </motion.div>
           
           <motion.h1 
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-5 md:mb-6 leading-tight px-2"
+            className="text-[clamp(2.25rem,10vw,6rem)] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-4 sm:mb-5 md:mb-6 leading-tight whitespace-nowrap w-full"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
